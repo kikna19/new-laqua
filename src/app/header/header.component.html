@@ -1,0 +1,39 @@
+<mat-toolbar-row class="main">
+  <div class="header" [@header]="header1">
+    <div class="header__logo">laqua</div>
+    <div class="header__content">
+      <div>აკვარიუმი</div>
+      <div>ტერარიუმი</div>
+      <div>გალია</div>
+    </div>
+    <div class="header__actions">
+  <span matBadge="{{0}}" matBadgeOverlap="false">
+    <fa-icon [icon]="cart"></fa-icon>
+  </span>
+      <div class="hamb" (click)="hambRotate()">
+        <span id="span1" [@hambOne]="hambOne1"></span>
+        <span id="span2" [@hambSec]="hambSec1"></span>
+        <span id="span3" [@hambThi]="hambThi1"></span>
+      </div>
+    </div>
+  </div>
+  <div class="drop" [@drop]="drop1">
+    <a #marineF routerLink="marine" routerLinkActive="active" (click)="hambRotate()">marine fish</a>
+    <a #fresh>freshwater fish</a>
+    <a #acce>accessories</a>
+    <a #spec>special offer</a>
+    <a #aboutF>about</a>
+    <a #cont>contact</a>
+  </div>
+
+  <div class="cover">
+    <div class="cover__main" style="position: absolute">
+      <h1>იპოვე საუკეთესო მეგობარი</h1>
+      <button (mouseenter)="btnAnimationIn()" (mouseleave)="btnAnimationOut()">
+        მოძებნე
+        <span #btn></span>
+      </button>
+    </div>
+  </div>
+</mat-toolbar-row>
+

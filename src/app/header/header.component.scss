@@ -1,0 +1,137 @@
+@mixin flex($align, $justify, $dir) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $dir;
+}
+$main-color: #071c26;
+
+.main {
+  @include flex(flex-start, center, column);
+  height: 100%;
+  width: 100%;
+  background: url("https://www.housedigest.com/img/gallery/how-much-does-it-cost-to-set-up-and-maintain-a-freshwater-fish-tank/l-intro-1655132713.jpg") no-repeat center;
+  background-size: cover;
+
+  .header {
+    position: relative;
+    @include flex(center, space-between, row);
+    padding: 0 5rem 0 5rem;
+    width: calc(100% - 10rem);
+    height: 6rem;
+    border-bottom: .1rem solid $main-color;
+
+    &__logo {
+      cursor: pointer;
+      @include flex(center, space-between, row);
+      width: 20%;
+      height: 100%;
+      font-size: 1.3rem;
+    }
+
+    &__content {
+      @include flex(center, space-between, row);
+      height: 100%;
+      width: 40%;
+      color: $main-color;
+    }
+
+    &__actions {
+      @include flex(center, space-between, row);
+      height: 100%;
+      width: 20%;
+
+      fa-icon {
+        cursor: pointer;
+        font-size: 1.5rem;
+        color: $main-color;
+      }
+
+      span {
+        .mat-badge-content {
+          border-radius: .5rem;
+          font-weight: bold;
+          background: red;
+        }
+      }
+
+
+      .hamb {
+        cursor: pointer;
+
+        span {
+          display: block;
+          height: .25rem;
+          width: 3rem;
+          margin: .5rem;
+          background-color: #071c26;
+        }
+      }
+    }
+  }
+
+  .drop {
+    position: absolute;
+    top: 6rem;
+    @include flex(flex-start, flex-start, column);
+    background-color: #071c26;
+    width: calc(100% - 1.8rem);
+    height: calc(100% - 8rem);
+    padding-top: 2rem;
+    padding-left: 1.8rem;
+
+    a {
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: "Arial Black", serif;
+      color: white;
+      margin-bottom: 3.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+  }
+
+  .cover {
+    @include flex(center, flex-start, column);
+    height: calc(100% - 6rem);
+    width: 100%;
+
+    &__main {
+      display: block;
+      text-align: center;
+      height: 10rem;
+      margin-top: 5rem;
+      width: auto;
+
+      h1 {
+        color: $main-color;
+        font-size: 2.2rem;
+        font-weight: bold;
+        letter-spacing: .1rem;
+
+      }
+
+      button {
+        width: 7rem;
+        height: 3.5rem;
+        padding: 0;
+        position: relative;
+        margin-top: 3rem;;
+        border: .1rem solid $main-color;
+        background: transparent;
+        cursor: pointer;
+        color: $main-color;
+        font-size: 1.1rem;
+
+        span {
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          background: white;
+        }
+      }
+    }
+  }
+
+}
