@@ -11,23 +11,25 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatBadgeModule} from "@angular/material/badge";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatProgressSpinnerModule,
-    MatToolbarModule,
-    FontAwesomeModule,
-    MatBadgeModule,
-    MatIconModule,
-    MatButtonModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatProgressSpinnerModule,
+        MatToolbarModule,
+        FontAwesomeModule,
+        MatBadgeModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDividerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

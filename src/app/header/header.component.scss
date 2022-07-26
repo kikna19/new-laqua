@@ -8,7 +8,7 @@ $main-color: #071c26;
 
 .main {
   @include flex(flex-start, center, column);
-  height: 100%;
+  height: 70%;
   width: 100%;
   background: url("https://www.housedigest.com/img/gallery/how-much-does-it-cost-to-set-up-and-maintain-a-freshwater-fish-tank/l-intro-1655132713.jpg") no-repeat center;
   background-size: cover;
@@ -16,10 +16,14 @@ $main-color: #071c26;
   .header {
     position: relative;
     @include flex(center, space-between, row);
-    padding: 0 5rem 0 5rem;
-    width: calc(100% - 10rem);
+    padding: 0 7rem 0 7rem;
+    width: calc(100% - 14rem);
     height: 6rem;
-    border-bottom: .1rem solid $main-color;
+
+    &__line {
+      width: 100%;
+      border-top-color: $main-color;
+    }
 
     &__logo {
       cursor: pointer;
@@ -34,6 +38,15 @@ $main-color: #071c26;
       height: 100%;
       width: 40%;
       color: $main-color;
+
+      div {
+        text-transform: capitalize;
+        color: $main-color;
+        font-size: 1.2rem;
+        font-family: Consolas, serif;
+        font-weight: 700;
+        letter-spacing: .2rem;
+      }
     }
 
     &__actions {
@@ -57,14 +70,14 @@ $main-color: #071c26;
 
 
       .hamb {
+        @include flex(center, space-between, row);
         cursor: pointer;
+        width: 3rem;
 
-        span {
-          display: block;
-          height: .25rem;
-          width: 3rem;
-          margin: .5rem;
-          background-color: #071c26;
+        fa-icon {
+          font-weight: bold;
+          font-size: .8rem;
+          color: $main-color;
         }
       }
     }
@@ -75,10 +88,10 @@ $main-color: #071c26;
     top: 6rem;
     @include flex(flex-start, flex-start, column);
     background-color: #071c26;
-    width: calc(100% - 1.8rem);
+    width: calc(100% - 3.8rem);
     height: calc(100% - 8rem);
     padding-top: 2rem;
-    padding-left: 1.8rem;
+    padding-left: 3.5rem;
 
     a {
       text-transform: uppercase;
@@ -105,9 +118,13 @@ $main-color: #071c26;
 
       h1 {
         color: $main-color;
-        font-size: 2.2rem;
-        font-weight: bold;
-        letter-spacing: .1rem;
+        font-size: 2.5rem;
+        font-weight: 800;
+        letter-spacing: .3rem;
+        border-radius: .5rem;
+        font-family: "Comic Sans MS", serif;
+        text-transform: capitalize;
+
 
       }
 
@@ -116,21 +133,87 @@ $main-color: #071c26;
         height: 3.5rem;
         padding: 0;
         position: relative;
-        margin-top: 3rem;;
-        border: .1rem solid $main-color;
+        margin-top: 4rem;;
+        border: .05rem solid $main-color;
         background: transparent;
         cursor: pointer;
         color: $main-color;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        font-family: "Comic Sans MS", serif;
+        text-transform: capitalize;
+
 
         span {
           position: absolute;
           left: 0;
           top: 0;
           height: 100%;
-          background: white;
+          background: $main-color;
         }
       }
+    }
+  }
+}
+
+
+.special-offer {
+  margin-top: 7rem;
+  @include flex(flex-start, space-between, row);
+  width: calc(100% - 14rem);
+  padding: 0 7rem 0 7rem;
+  height: 35rem;
+
+  .first-offer {
+    @include flex(flex-start, flex-start, column);
+    width: 40%;
+    height: 100%;
+
+    &__img {
+      height: 93%;
+      width: 80%;
+      background-size: cover;
+      background: url("https://image.freepik.com/free-photo/betta-fish-siamese-fighting-fish-isolated-black-background-fine-art-design-concept_35927-367.jpg") no-repeat center;
+    }
+
+    &__text {
+      margin-top: .1rem;
+      text-decoration: none;
+      font-family: Verdana, serif;
+    }
+
+  }
+
+  .second-offer {
+    @include flex(flex-start, space-between, row);
+    flex-wrap: wrap;
+    width: 55%;
+    height: 100%;
+
+    span {
+      font-family: Verdana, serif;
+    }
+
+    img {
+      width: 15rem;
+      height: 15rem;
+    }
+
+    &__first-ad {
+      margin-left: 5rem;
+      @include flex(flex-start, flex-start, column);
+
+    }
+
+    &__second-ad {
+      margin-left: 5rem;
+      @include flex(flex-start, flex-start, column);
+
+    }
+
+    &__third-ad {
+      margin-left: 5rem;
+      @include flex(flex-start, flex-start, column);
+
     }
   }
 

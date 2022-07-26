@@ -1,47 +1,34 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef, Inject,
+  ElementRef,
+  Inject,
   OnInit,
   Renderer2,
   RendererFactory2,
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-
-
-import {faShoppingCart} from "@fortawesome/free-solid-svg-icons/faShoppingCart";
 import {animate, state, style, transition, trigger} from "@angular/animations";
 import gsap from "gsap";
 import {DOCUMENT} from "@angular/common";
+
+import {faCircleNotch} from "@fortawesome/free-solid-svg-icons/faCircleNotch";
+import {faBasketShopping} from "@fortawesome/free-solid-svg-icons/faBasketShopping";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  animations: [
-    trigger('hambOne', [
-      state('hambOne2', style({})),
-      state('hambOne3', style({
-        transform: 'translateY(.75rem) rotate(45deg)',
-        backgroundColor: 'white',
+  animations:  [
+    trigger('menu', [
+      state('menu2', style({
+        color: '#071c26',
       })),
-      transition('*<=>*', animate('.5s ease-in-out')),
-    ]),
-    trigger('hambSec', [
-      state('hambSec2', style({})),
-      state('hambSec3', style({
-        opacity: 0
+      state('menu3', style({
+      color: 'white',
       })),
-      transition('*<=>*', animate('.5s ease-in-out')),
-    ]),
-    trigger('hambThi', [
-      state('hambThi2', style({})),
-      state('hambThi3', style({
-        transform: 'translateY(-.75rem) rotate(-45deg)',
-        backgroundColor: 'white',
-      })),
-      transition('*<=>*', animate('.5s ease-in-out')),
+      transition('*<=>*', animate('.1s ease-in-out')),
     ]),
     trigger('drop', [
       state('drop2', style({
@@ -62,19 +49,19 @@ import {DOCUMENT} from "@angular/common";
         backgroundColor: '#071c26',
         color: 'white',
       })),
-      transition('* <=> *', animate('1s ease-in-out')),
+      transition('*<=>*', animate('1s ease-in-out')),
     ]),
   ],
   encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
-  cart = faShoppingCart;
-  hambOne1 = 'hambOne2';
-  hambSec1 = 'hambSec2';
-  hambThi1 = 'hambThi2';
+  cart = faBasketShopping;
   header1 = 'header2';
   drop1 = 'drop2';
+  dots = faCircleNotch;
+  menu1 = 'menu2';
   @ViewChild('marineF', {static: true}) marineF!: ElementRef
+  @ViewChild('g', {static: true, read: ElementRef}) g!: ElementRef
   @ViewChild('fresh', {static: true}) fresh!: ElementRef
   @ViewChild('acce', {static: true}) acce!: ElementRef
   @ViewChild('spec', {static: true}) spec!: ElementRef
@@ -127,10 +114,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
 
   hambRotate(): void {
-    this.hambOne1 = this.hambOne1 === 'hambOne2' ? 'hambOne3' : 'hambOne2';
-    this.hambSec1 = this.hambSec1 === 'hambSec2' ? 'hambSec3' : 'hambSec2';
-    this.hambThi1 = this.hambThi1 === 'hambThi2' ? 'hambThi3' : 'hambThi2';
     this.header1 = this.header1 === 'header2' ? 'header3' : 'header2';
+    this.menu1 = this.menu1 === 'menu2' ? 'menu3' : 'menu2';
     this.drop1 = this.drop1 === 'drop2' ? 'drop3' : 'drop2';
     this.tl.reversed() ? this.tl.play() : this.tl.reverse();
     this.disableScroll();
@@ -149,7 +134,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         left: '0%'
       }, {
         duration: .5,
-        width: '100%',
+        width: '101%',
         ease: 'ease'
       })
   }

@@ -2,21 +2,22 @@
   <div class="header" [@header]="header1">
     <div class="header__logo">laqua</div>
     <div class="header__content">
-      <div>აკვარიუმი</div>
-      <div>ტერარიუმი</div>
-      <div>გალია</div>
+      <div>aquarium</div>
+      <div>terrarium</div>
+      <div>cage</div>
     </div>
     <div class="header__actions">
   <span matBadge="{{0}}" matBadgeOverlap="false">
     <fa-icon [icon]="cart"></fa-icon>
   </span>
       <div class="hamb" (click)="hambRotate()">
-        <span id="span1" [@hambOne]="hambOne1"></span>
-        <span id="span2" [@hambSec]="hambSec1"></span>
-        <span id="span3" [@hambThi]="hambThi1"></span>
+        <fa-icon [@menu]="menu1" [icon]="dots"></fa-icon>
+        <fa-icon [@menu]="menu1" [icon]="dots"></fa-icon>
+        <fa-icon [@menu]="menu1" [icon]="dots"></fa-icon>
       </div>
     </div>
   </div>
+  <mat-divider class="header__line"></mat-divider>
   <div class="drop" [@drop]="drop1">
     <a #marineF routerLink="marine" routerLinkActive="active" (click)="hambRotate()">marine fish</a>
     <a #fresh>freshwater fish</a>
@@ -27,13 +28,38 @@
   </div>
 
   <div class="cover">
-    <div class="cover__main" style="position: absolute">
-      <h1>იპოვე საუკეთესო მეგობარი</h1>
+    <div class="cover__main">
+      <h1>best friend</h1>
       <button (mouseenter)="btnAnimationIn()" (mouseleave)="btnAnimationOut()">
-        მოძებნე
+        find
         <span #btn></span>
       </button>
     </div>
   </div>
 </mat-toolbar-row>
+<mat-toolbar-row class="special-offer">
+  <div class="first-offer">
+    <div style="padding: .5rem; border: .1rem solid red; width: 80%; height: 94%">
+      <div class="first-offer__img" #firstImg></div>
+      <span class="first-offer__text" #firstText>Looking For a Betta Fish?</span>
+    </div>
+  </div>
 
+  <div class="second-offer">
+    <div class="second-offer__first-ad">
+      <img id="second-ad" #secondFirstImg
+           src="https://nationaltoday.com/wp-content/uploads/2022/06/Clean-Your-Aquarium-Day.jpg">
+      <span #secondFirstText>Brand New Product</span>
+    </div>
+    <div class="second-offer__second-ad">
+      <img id="third-ad" #secondSecondImg
+           src="https://www.thesprucepets.com/thmb/5gt7Ue6cos4JFTyC1QQ2IeVJNE0=/1398x1398/smart/filters:no_upscale()/Fisheseating-GettyImages-940731024-5c2814d2c9e77c0001b0ab83.jpg">
+      <span #secondSecondText>Right Type of Food</span>
+    </div>
+    <div class="second-offer__third-ad">
+      <img id="fourth-ad" #secondThirdImg
+           src="https://aquariumadviser.com/wp-content/uploads/2018/10/Rainbow-Shark.jpg">
+      <span #secondThirdText>70% OFF</span>
+    </div>
+  </div>
+</mat-toolbar-row>
