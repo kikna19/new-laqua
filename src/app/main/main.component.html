@@ -1,0 +1,33 @@
+<div class="cover">
+  <div class="cover__main">
+    <h1>best friend</h1>
+    <button (mouseenter)="btnAnimationIn()" (mouseleave)="btnAnimationOut()">
+      find
+      <span #btn></span>
+    </button>
+  </div>
+</div>
+<mat-toolbar-row class="special-offer">
+  <div class="first-offer">
+    <div class="first-offer__img" #firstImg></div>
+    <span class="first-offer__text" #firstText>Looking For a Betta Fish?</span>
+  </div>
+
+  <div class="second-offer">
+    <div class="second-offer__first-ad">
+      <img id="second-ad" #secondFirstImg
+           src="https://nationaltoday.com/wp-content/uploads/2022/06/Clean-Your-Aquarium-Day.jpg">
+      <span #secondFirstText>Brand New Product</span>
+    </div>
+    <div class="second-offer__second-ad">
+      <img id="third-ad" #secondSecondImg
+           src="https://www.thesprucepets.com/thmb/5gt7Ue6cos4JFTyC1QQ2IeVJNE0=/1398x1398/smart/filters:no_upscale()/Fisheseating-GettyImages-940731024-5c2814d2c9e77c0001b0ab83.jpg">
+      <span #secondSecondText>Right Type of Food</span>
+    </div>
+    <div class="second-offer__third-ad">
+      <img id="fourth-ad" #secondThirdImg
+           src="https://aquariumadviser.com/wp-content/uploads/2018/10/Rainbow-Shark.jpg">
+      <span #secondThirdText>70% OFF</span>
+    </div>
+  </div>
+</mat-toolbar-row>

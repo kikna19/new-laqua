@@ -1,0 +1,32 @@
+<mat-toolbar-row class="main">
+  <div class="header" [@header]="header1">
+    <div class="header__logo" routerLink="/">laqua</div>
+    <div class="header__content">
+      <div>aquarium</div>
+      <div>terrarium</div>
+      <div>cage</div>
+    </div>
+    <div class="header__actions">
+  <span matBadge="{{0}}" matBadgeOverlap="false" routerLink="/products">
+    <fa-icon [icon]="cart"></fa-icon>
+  </span>
+      <div class="hamb" (click)="hambRotate()">
+        <fa-icon [icon]="dots"></fa-icon>
+        <fa-icon [icon]="dots"></fa-icon>
+        <fa-icon [icon]="dots"></fa-icon>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider class="header__line"></mat-divider>
+
+  <div class="drop" [@drop]="drop1">
+    <a #marineF (click)="hambRotate()">marine fish</a>
+    <a #fresh>freshwater fish</a>
+    <a #acce>accessories</a>
+    <a #spec>special offer</a>
+    <a #aboutF>about</a>
+    <a #cont>contact</a>
+  </div>
+</mat-toolbar-row>
+

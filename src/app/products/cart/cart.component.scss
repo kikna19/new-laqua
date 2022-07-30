@@ -1,0 +1,219 @@
+@mixin flex($align, $justify, $dir) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $dir;
+}
+
+$border-color: rgb(43, 45, 48);
+$sec-color: rgb(40, 44, 75);
+
+.category {
+  display: block;
+  height: auto;
+  width: calc(100% - 10rem);
+  margin: 0 5rem 0 5rem;
+  color: white;
+
+  &__search {
+    @include flex(center, space-between, row);
+    width: calc(100% - 1.2rem);
+    height: 5rem;
+    padding-left: 1.2rem;
+    margin-top: 2rem;
+
+    p {
+      text-transform: capitalize;
+      font-size: 1.1rem;
+      font-family: "Arial Black", sans-serif;
+    }
+
+    input {
+      height: 3rem;
+      outline: none;
+      width: 20%;
+      background: transparent;
+      border: .01rem solid $border-color;
+      padding-left: 1rem;
+      font-size: 1.1rem;
+      color: white;
+      font-family: Verdana, monospace;
+    }
+
+    input::placeholder {
+      color: grey;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    input:focus {
+      box-shadow: 0 0 .4rem 0 rgba(255,165,0,1);
+      -webkit-box-shadow: 0 0 .4rem 0 rgba(255,165,0,1);
+      -moz-box-shadow: 0 0 .4rem 0 rgba(255,165,0,1);
+    }
+  }
+
+  &__result {
+    @include flex(flex-start, space-between, row);
+    width: 100%;
+
+    &__select {
+      display: block;
+      width: 20%;
+
+      &__price {
+        display: block;
+        text-align: center;
+        padding-top: 3rem;
+        width: 100%;
+        height: 20vh;
+        background: $sec-color;
+        margin-top: 1rem;
+        border-radius: .5rem;
+
+        h1 {
+          font-family: 'GaroaHackerClubeBold', monospace;
+          letter-spacing: .1rem;
+          font-size: 2vw;
+          text-transform: capitalize;
+        }
+
+
+        .mat-slider.mat-slider-horizontal .mat-slider-track-wrapper {
+          height: .5rem;
+          border-radius: .8rem;
+        }
+
+        .mat-slider {
+          width: 80%;
+          margin-top: 1rem;
+        }
+
+        .mat-slider.mat-slider-horizontal .mat-slider-track-background,
+        .mat-slider.mat-slider-horizontal .mat-slider-track-fill {
+          height: 100%;
+        }
+
+        .mat-slider-thumb-label {
+          background-color: black !important;
+          color: orange;
+        }
+
+        .mat-slider-thumb-label-text {
+          color: #53dc53 !important;
+        }
+
+        .mat-accent .mat-slider-thumb {
+          height: 1.5rem;
+          width: 1.5rem;
+          background-color: white;
+          bottom: -.9rem;
+          right: -1rem;
+        }
+
+
+        .mat-accent .mat-slider-track-fill {
+          background: orange;
+        }
+
+
+        button {
+          margin-top: 1rem;
+          background: #53dc53;
+          text-transform: capitalize;
+        }
+      }
+
+      &__species {
+        @include flex(center, flex-start, column);
+        width: 100%;
+        height: 30vh;
+        padding-top: 3rem;
+        overflow: scroll;
+        background: $sec-color;
+        border-radius: .5rem;
+        margin-top: 2rem;
+
+        h1 {
+          font-family: 'GaroaHackerClubeBold', monospace;
+          letter-spacing: .1rem;
+          font-size: 2vw;
+          text-transform: capitalize;
+        }
+
+        div {
+          display: block;
+          text-align: center;
+          width: 80%;
+          height: 2rem;
+          border-radius: .5rem;
+          margin-top: 2rem;
+          cursor: pointer;
+          line-height: 2rem;
+          text-transform: capitalize;
+          font-family: Verdana, monospace;;
+          font-size: 1rem;
+          color: #ffffff;
+        }
+      }
+    }
+
+    &__products {
+      @include flex(flex-start, flex-start, row);
+      flex-wrap: wrap;
+      width: 80%;
+
+      &__item {
+        border: .01rem solid $border-color;
+        margin: 1rem;
+        width: 25%;
+        height: auto;
+        background: transparent;
+        color: white;
+
+        &__header {
+          text-transform: capitalize;
+          font-family: "DejaVu Sans", serif;
+          font-weight: bold;
+          color: orange;
+        }
+
+        img {
+          margin: auto;
+          width: 100%;
+          border-radius: .1rem;
+        }
+
+        &__details {
+          display: block;
+          text-align: start;
+          margin-top: 1rem;
+          font-size: 1rem;
+          width: 100%;
+          text-transform: capitalize;
+          font-family: monospace;
+
+          .gel {
+            color: #53dc53;
+          }
+
+        }
+
+        &__btn {
+          padding-left: 2%;
+          margin-top: 0;
+          width: 100%;
+
+          button {
+            text-transform: capitalize;
+            font-family: Verdana, sans-serif;
+            font-weight: 700;
+            background: transparent;
+            border: .01rem solid $border-color;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,126 @@
+@mixin flex($align, $justify, $dir) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $dir;
+}
+
+$main-color: #071c26;
+
+.cover {
+  @include flex(center, flex-start, column);
+  height: calc(100% - 6rem);
+  width: 100%;
+  background: url("https://www.housedigest.com/img/gallery/how-much-does-it-cost-to-set-up-and-maintain-a-freshwater-fish-tank/l-intro-1655132713.jpg") no-repeat center;
+  background-size: cover;
+
+  &__main {
+    display: block;
+    text-align: center;
+    height: 10rem;
+    margin-top: 5rem;
+    width: auto;
+
+    h1 {
+      color: $main-color;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: .3rem;
+      border-radius: .5rem;
+      font-family: "Comic Sans MS", serif;
+      text-transform: capitalize;
+
+
+    }
+
+    button {
+      width: 7rem;
+      height: 3.5rem;
+      padding: 0;
+      position: relative;
+      margin-top: 4rem;;
+      border: .05rem solid $main-color;
+      background: transparent;
+      cursor: pointer;
+      color: $main-color;
+      font-size: 1.2rem;
+      font-family: "Comic Sans MS", serif;
+      text-transform: capitalize;
+
+
+      span {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background: $main-color;
+      }
+    }
+  }
+}
+
+.special-offer {
+  margin-top: 7rem;
+  @include flex(flex-start, space-between, row);
+  width: calc(100% - 14rem);
+  padding: 0 7rem 0 7rem;
+  height: 35rem;
+
+  span {
+    font-family: Verdana, serif;
+    font-size: 1.2rem;
+    margin-top: .2rem;
+  }
+
+  .first-offer {
+    @include flex(flex-start, flex-start, column);
+    width: 45%;
+    height: 100%;
+
+    &__img {
+      height: 93%;
+      width: 90%;
+      background-size: cover;
+      background: url("https://petkeen.com/wp-content/uploads/2021/01/Multi-color-Siamese-fighting-fish-betta_panpilai-paipa_shutterstock.jpg") no-repeat center;
+    }
+
+    &__text {
+      margin-top: .1rem;
+      text-decoration: none;
+      font-family: Verdana, serif;
+    }
+
+  }
+
+  .second-offer {
+    @include flex(flex-start, space-between, row);
+    flex-wrap: wrap;
+    width: 50%;
+    height: 100%;
+
+
+    img {
+      width: 15vw;
+      height: 25vh;
+    }
+
+    &__first-ad {
+      margin-left: 5rem;
+      @include flex(flex-start, flex-start, column);
+
+    }
+
+    &__second-ad {
+      margin-left: 5rem;
+      @include flex(flex-start, flex-start, column);
+
+    }
+
+    &__third-ad {
+      margin-left: 5rem;
+      @include flex(flex-start, flex-start, column);
+
+    }
+  }
+
+}

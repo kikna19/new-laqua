@@ -1,0 +1,61 @@
+{
+  "products": [
+    {
+      "species": "parrot",
+      "id": 1,
+      "name": "rosella",
+      "price": 200,
+      "img": "https://upload.wikimedia.org/wikipedia/commons/0/01/Platycercus_elegans_Wilsons_Prom.jpg"
+    },
+    {
+      "species": "parrot",
+      "name": "psittacula krameri",
+      "id": 2,
+      "price": 300,
+      "img": "https://www.indiamike.com/files/images/90/90/41/roseringed-parakeet.jpg"
+    },
+    {
+      "species": "parrot",
+      "name": "wavy",
+      "id": 3,
+      "price": 100,
+      "img": "https://media.izi.travel/263fc413-3ed9-44da-a34c-f86a9ffd0ac6/a8bb9bd5-8bab-4357-adfd-aa618e30da8c_800x600.jpg"
+    },
+    {
+      "species": "parrot",
+      "name": "czech",
+      "id": 4,
+      "price": 100,
+      "img": "https://easyladys.com/f/f6d03b0f65a5b1696bbe7a96fe58b48e.jpg"
+    },
+    {
+      "species": "parrot",
+      "name": "corella",
+      "id": 5,
+      "price": 100,
+      "img": "https://zooclub.ambebi.ge/images/stories/2014/aprili/frinvelebi/korelaa.jpg"
+    },
+    {
+      "species": "parrot",
+      "name": "corella",
+      "id": 5,
+      "price": 100,
+      "img": "https://zooclub.ambebi.ge/images/stories/2014/aprili/frinvelebi/korelaa.jpg"
+    },
+    {
+      "species": "marine fish",
+      "name": "nemo",
+      "id": 6,
+      "price": 100,
+      "img": "https://zooclub.ambebi.ge/images/stories/2014/aprili/frinvelebi/korelaa.jpg"
+    },
+    {
+      "species": "freshwater fish",
+      "name": "shark",
+      "id": 7,
+      "price": 100,
+      "img": "https://zooclub.ambebi.ge/images/stories/2014/aprili/frinvelebi/korelaa.jpg"
+    }
+  ]
+}
+
