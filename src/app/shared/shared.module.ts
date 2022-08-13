@@ -7,16 +7,19 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatBadgeModule} from "@angular/material/badge";
 import {RouterModule} from "@angular/router";
 import {FooterComponent} from "./footer/footer.component";
+import {CartAlertComponent} from './cart-alert/cart-alert.component';
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    CartAlertComponent,
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -24,8 +27,10 @@ import {FooterComponent} from "./footer/footer.component";
     MatToolbarModule,
     FontAwesomeModule,
     MatBadgeModule,
-    RouterModule
-  ]
+    RouterModule,
+    MatIconModule,
+  ],
+
 })
 export class SharedModule {
 }

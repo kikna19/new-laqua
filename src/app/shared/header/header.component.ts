@@ -13,6 +13,7 @@ import {faBasketShopping} from "@fortawesome/free-solid-svg-icons/faBasketShoppi
 import {faCircleNotch} from "@fortawesome/free-solid-svg-icons/faCircleNotch";
 import gsap from "gsap";
 import {DOCUMENT} from "@angular/common";
+import { ProductService } from 'src/app/products/services/product.service';
 
 @Component({
   selector: 'app-header',
@@ -54,11 +55,13 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('aboutF', {static: true}) aboutF!: ElementRef
   @ViewChild('cont', {static: true}) cont!: ElementRef
   tl = gsap.timeline({reversed: true});
+  prodLength: number = 0;
 
   constructor(
     private renderer: Renderer2,
     private rendererFactory: RendererFactory2,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    public productService: ProductService
   ) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
   }
@@ -69,7 +72,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.dropText();
+  
+
   }
+
+
+
 
   dropText(): void {
     this.tl.fromTo([

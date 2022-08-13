@@ -1,0 +1,56 @@
+<mat-toolbar-row class="order">
+  <h1>make order</h1>
+  <form [formGroup]="form" class="order__form">
+    <mat-form-field appearance="outline"
+                    floatLabel="always">
+      <mat-label>name</mat-label>
+      <input matInput
+             type="text"
+             placeholder="e.g. John"
+             formControlName="name">
+      <mat-error *ngFor="let err of errors('name')">{{err}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline"
+                    floatLabel="always">
+      <mat-label>surname</mat-label>
+      <input matInput
+             type="text"
+             placeholder="e.g. Doe"
+             formControlName="surname">
+      <mat-error *ngFor="let err of errors('surname')">{{err}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline"
+                    floatLabel="always">
+      <mat-label>mobile</mat-label>
+      <input matInput
+             type="tel"
+             placeholder="e.g. 555-12-34-56"
+             formControlName="mobile">
+      <mat-error *ngFor="let err of errors('mobile')">{{err}}</mat-error>
+
+    </mat-form-field>
+    <mat-form-field appearance="outline"
+                    floatLabel="always">
+      <mat-label>city</mat-label>
+      <input matInput
+             placeholder="e.g. Tbilisi"
+             type="text"
+             formControlName="city">
+      <mat-error *ngFor="let err of errors('city')">{{err}}</mat-error>
+
+    </mat-form-field>
+    <mat-form-field appearance="outline"
+                    floatLabel="always">
+      <mat-label>address</mat-label>
+      <input matInput
+             placeholder="e.g. Chavchavadze N10"
+             type="text"
+             formControlName="address">
+      <mat-error *ngFor="let err of errors('address')">{{err}}</mat-error>
+    </mat-form-field>
+    <button mat-button
+            (click)="confirm()">
+      confirm payment
+    </button>
+  </form>
+</mat-toolbar-row>

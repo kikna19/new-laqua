@@ -7,27 +7,138 @@
     </button>
   </div>
 </div>
+<div class="header-section">
+  <h1>special offer</h1>
+  <mat-divider></mat-divider>
+
+</div>
 <mat-toolbar-row class="special-offer">
   <div class="first-offer">
-    <div class="first-offer__img" #firstImg></div>
-    <span class="first-offer__text" #firstText>Looking For a Betta Fish?</span>
+    <div class="first-offer__img"></div>
+    <span class="first-offer__text">Looking For a Betta Fish?</span>
   </div>
-
   <div class="second-offer">
     <div class="second-offer__first-ad">
-      <img id="second-ad" #secondFirstImg
+      <img id="second-ad"
            src="https://nationaltoday.com/wp-content/uploads/2022/06/Clean-Your-Aquarium-Day.jpg">
-      <span #secondFirstText>Brand New Product</span>
+      <span>Brand New Product</span>
     </div>
     <div class="second-offer__second-ad">
-      <img id="third-ad" #secondSecondImg
+      <img id="third-ad"
            src="https://www.thesprucepets.com/thmb/5gt7Ue6cos4JFTyC1QQ2IeVJNE0=/1398x1398/smart/filters:no_upscale()/Fisheseating-GettyImages-940731024-5c2814d2c9e77c0001b0ab83.jpg">
-      <span #secondSecondText>Right Type of Food</span>
+      <span>Right Type of Food</span>
     </div>
     <div class="second-offer__third-ad">
-      <img id="fourth-ad" #secondThirdImg
+      <img id="fourth-ad"
            src="https://aquariumadviser.com/wp-content/uploads/2018/10/Rainbow-Shark.jpg">
-      <span #secondThirdText>70% OFF</span>
+      <span>70% OFF</span>
     </div>
   </div>
 </mat-toolbar-row>
+<div class="header-section">
+  <h1>top 5 fish in store</h1>
+  <mat-divider></mat-divider>
+</div>
+<mat-horizontal-stepper #stepper ngClass="{{'last-edited-step-' + stepper.selectedIndex}}">
+  <mat-step>
+    <ng-template matStepLabel>
+      <fa-icon [icon]="fish"></fa-icon>
+    </ng-template>
+    <div class="top-first">
+      <div>
+        <h2>french angel fish</h2>
+        <p>this fish lives primarily in the reefs around the Caribbean seas,
+          which is awesome because it means we get to see it here as well.
+          It lives in t rocks and reefs around here, and can frequently be found in the abandoned shipwrecks.
+          It’s a great fish to spot on a deep sea dive and it’s easy to spot with its distinctive blue head
+          and yellow spots all over its body.</p>
+      </div>
+      <img
+        src="https://i1.wp.com/mexican-fish.com/wp-content/uploads/F829-French-Angelfish-1.jpg?resize=570%2C452&ssl=1">
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <fa-icon [icon]="fish"></fa-icon>
+    </ng-template>
+    <div class="top-second">
+      <div>
+        <h2>blueface angel fish</h2>
+        <p>in the species of angelfish, there are many that would qualify to be on this list, but the blueface
+          angelfish deserves its place here. It’s a particular fish that has a dizzying pattern on its side that
+          swirls and blends together in peculiar way. The head also features a bright eye spot that distinguishes
+          it from among other angelfish. Although it is normally found on the other side
+          of the world, there have been a few sighting in the reefs and wrecks of the Floridian coast..</p>
+      </div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Pomacanthus_xanthometopon_2.jpg">
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <fa-icon [icon]="fish"></fa-icon>
+    </ng-template>
+    <div class="top-third">
+      <div>
+        <h2>trigger fish</h2>
+        <p>this name actually encapsulates the 40 different species of closely related fish that all bear some
+          resemblance.
+          They come in bright colors and even in stark greys and whites. They can be great as a solitary tank fish,
+          but they
+          don’t work well in large tanks with many fish.
+          They can be notoriously ill-tempered. They have the remarkable ability among fishes to learn from previous
+          experiences.</p>
+      </div>
+      <img src="https://reefguide.org/pix/clowntriggerfish4.jpg">
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <fa-icon [icon]="fish"></fa-icon>
+    </ng-template>
+    <div class="top-fourth">
+      <div>
+        <h2>clown fish</h2>
+        <p>how could any list of beautiful fish be complete without the clownfish present? Because of the movie
+          Finding Nemo,
+          it’s become such a hot commodity that it’s getting harder and harder to find in fish stores. In the wild,
+          they are
+          quite numerous anywhere that anemone grows.
+          They partner with the anemone to provide nutrients to the plant while the plant cleans the fish from harmful
+          bacteria.</p>
+      </div>
+      <img src="https://i.pinimg.com/originals/50/e2/a0/50e2a0bdde0faadf63f337e32cd68b3e.jpg">
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>
+      <fa-icon [icon]="fish"></fa-icon>
+    </ng-template>
+    <div class="top-fifth">
+      <div>
+        <h2>mandarin fish</h2>
+        <p>the most colorful fish in the world is the mandarinfish. It’s a brightly lit, multi-colored fish that is
+          remarkable to see in the wild. Anybody would count it a lucky day to spot one of
+          these beauties. The name actually comes from the brightly-colored robes an Imperial Mandarin would wear.</p>
+      </div>
+      <img src="http://3.bp.blogspot.com/-LQUBKFiTdUc/VKG6CrQXlwI/AAAAAAAAAjg/9-_Se4jmwJE/s1600/zxCasdc.jpg">
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+<div class="header-section">
+  <h1>all products</h1>
+  <mat-divider></mat-divider>
+</div>
+<div class="nums">
+  <div>
+    <span class="num-text">parrots</span>
+    <p #parrots></p>
+  </div>
+  <div>
+    <span class="num-text">pets</span>
+    <p #pets></p>
+  </div>
+  <div>
+    <span class="num-text">fishes</span>
+    <p #fishes></p>
+  </div>
+</div>

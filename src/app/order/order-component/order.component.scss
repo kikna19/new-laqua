@@ -1,0 +1,70 @@
+.order {
+  display: block;
+  text-align: start;
+  width: calc(100% - 14rem);
+  height: calc(100% - 2rem);
+  background: white;
+  padding: 2rem 7rem 0 7rem;
+
+  h1 {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-family: "Arial Black", sans-serif;
+    font-weight: bold;
+    letter-spacing: .2rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+
+    .mat-form-field {
+      width: 40%;
+      margin-top: 1rem;
+    }
+
+    .mat-form-field-label {
+      text-transform: capitalize;
+      font-size: 1.1rem;
+    }
+
+    .mat-form-field-appearance-outline {
+
+      .mat-form-field-outline {
+        color: #071c26;
+      }
+    }
+
+    .mat-error {
+      font-size: .9rem;
+      text-transform: capitalize;
+    }
+
+
+    input::placeholder {
+      font-style: italic;
+      font-size: .9rem;
+    }
+
+    input {
+      text-transform: capitalize;
+      height: 2rem;
+      font-size: 1.1rem;
+      font-family: "Andale Mono", monospace;
+    }
+
+    button {
+      font-size: 1.1rem;
+      font-family: Verdana, monospace;
+      text-transform: capitalize;
+      background: #071c26;
+      color: white;
+      margin-top: 1rem;
+    }
+
+
+  }
+}

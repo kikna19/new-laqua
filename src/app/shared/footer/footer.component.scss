@@ -1,0 +1,54 @@
+@mixin flex($align, $justify, $dir) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $dir;
+}
+
+.footer {
+  @include flex(flex-start, center, row);
+  flex-wrap: wrap;
+  padding-top: 3rem;
+  width: 100%;
+  height: 15rem;
+  margin-top: 7rem;
+  border-top: .1rem solid #b964f3;
+
+  div {
+    @include flex(center, center, column);
+    width: 20%;
+    color: white;
+
+    h2 {
+      text-transform: uppercase;
+      font-family: "Source Code Pro", serif;
+      font-size: 1.2rem;
+    }
+
+    p {
+      font-family: "Mukta Mahee", monospace;
+      font-size: 1rem;
+      text-transform: capitalize;
+      cursor: pointer;
+
+
+    }
+  }
+}
+
+.footer-bottom {
+  display: block;
+  line-height: 4rem;
+  text-align: center;
+  width: 100%;
+  height: 4rem;
+
+
+  span {
+    font-family: "Mukta Mahee", monospace;
+    font-size: 1rem;
+    color: white;
+    text-transform: capitalize;
+  }
+
+}

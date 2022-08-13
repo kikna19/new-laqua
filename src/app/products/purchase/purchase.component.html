@@ -1,0 +1,60 @@
+<mat-toolbar-row class="purchase">
+  <ng-container *ngIf="products.length else noItems">
+    <div class="purchase__header">
+      <div>
+        <h2>item</h2>
+      </div>
+      <div>
+        <h2>name</h2>
+      </div>
+      <div>
+        <h2>price</h2>
+      </div>
+      <div>
+        <h2>remove</h2>
+      </div>
+    </div>
+    <div *ngFor="let prod of products index as i">
+      <div class="purchase__product">
+        <div>
+          <img src="{{prod.img}}">
+        </div>
+        <div>
+          <h2 id="name">{{prod.name}}</h2>
+        </div>
+        <div>
+          <h2 id="price">{{prod.price + ' ₾'}}</h2>
+        </div>
+        <div>
+          <button mat-fab (click)="removeItem(i)">
+            <fa-icon [icon]="remove"></fa-icon>
+          </button>
+        </div>
+      </div>
+      <mat-divider class="purchase__line"></mat-divider>
+    </div>
+
+
+    <div class="purchase__total">
+      <p>total: {{total()}} ₾</p>
+      <div>
+        <button mat-button (click)="order()">
+          <span>order</span>
+          <fa-icon [icon]="buy" id="buy"></fa-icon>
+        </button>
+        <button mat-button (click)="clearCart()">
+          <span>clear cart</span>
+          <fa-icon [icon]="trash" id="delete"></fa-icon>
+        </button>
+      </div>
+    </div>
+
+  </ng-container>
+  <ng-template #noItems>
+    <div id="empty">
+      <span>empty cart</span>
+      <fa-icon [icon]="empty"></fa-icon>
+    </div>
+  </ng-template>
+
+</mat-toolbar-row>

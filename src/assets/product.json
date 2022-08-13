@@ -2,8 +2,8 @@
   "products": [
     {
       "species": "parrot",
-      "id": 1,
       "name": "rosella",
+      "id": 1,
       "price": 200,
       "img": "https://upload.wikimedia.org/wikipedia/commons/0/01/Platycercus_elegans_Wilsons_Prom.jpg"
     },

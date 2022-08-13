@@ -12,6 +12,9 @@ import {
   switchMap,
 } from "rxjs";
 import {Product} from "../product";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {CartAlertComponent} from "../../shared/cart-alert/cart-alert.component";
+import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
 
 @Component({
   selector: 'app-cart',
@@ -26,10 +29,12 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
   sub$!: Subscription;
   products$!: Observable<Product[]>;
   priceVal: number = 0;
+  view = faEye;
 
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private snackBar: MatSnackBar,
   ) {
   }
 
@@ -47,12 +52,13 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
       filter((val: any) => val.length >= 0),
       distinctUntilChanged(),
       debounceTime(1000),
-      switchMap(_=> this.products$.pipe(
-        map((arr: Product[]) => arr.filter((i: Product) => i.name.includes(this.inputValue)))
+      switchMap(_ => this.products$.pipe(
+        map((arr: Product[]) => arr.filter((i: Product) => i.name.includes(this.inputValue.trim())))
       ))
     ).subscribe(
       res => this.products = res
-    )
+    );
+
   }
 
   filterValue(val: number): any {
@@ -73,12 +79,35 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
 
   speciesFilter(specie: string): void {
     this.products$.pipe(
-      switchMap((i: Product[]) => i.filter((i: Product) => i.species === specie)),
+      map((i: Product[]) => i.filter((i: Product) => i.species === specie)),
+    ).subscribe(
+      res => this.products = res
     )
   }
 
   ngOnDestroy(): void {
     this.sub$.unsubscribe();
   }
+
+
+  addToCart(prod: Product): void {
+    this.productService.addToCart(prod);
+    let msg: string;
+    let msgClass: string;
+    if (!this.productService.exist) {
+      msg = 'Product added !';
+      msgClass = 'success';
+    } else {
+      msg = 'Product is also added !';
+      msgClass = 'error';
+    }
+    this.snackBar.openFromComponent(CartAlertComponent, {
+      data: [msg, msgClass],
+      duration: 2000,
+      horizontalPosition: 'end',
+    });
+
+  }
+
 
 }

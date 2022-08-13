@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Cormorant+Garamond:wght@300&family=DynaPuff:wght@500&family=Fredoka+One&family=Luckiest+Guy&family=Roboto:ital,wght@0,400;1,300&family=Rubik+Dirt&family=Rubik+Distressed&display=swap');
+
 @mixin flex($align, $justify, $dir) {
   display: flex;
   align-items: $align;
@@ -6,13 +9,15 @@
 }
 
 $main-color: #071c26;
+$star-color: #b8912f;
 
 .cover {
   @include flex(center, flex-start, column);
-  height: calc(100% - 6rem);
+  height: calc(80% - 6rem);
   width: 100%;
   background: url("https://www.housedigest.com/img/gallery/how-much-does-it-cost-to-set-up-and-maintain-a-freshwater-fish-tank/l-intro-1655132713.jpg") no-repeat center;
   background-size: cover;
+  margin-bottom: 5rem;
 
   &__main {
     display: block;
@@ -27,7 +32,7 @@ $main-color: #071c26;
       font-weight: 800;
       letter-spacing: .3rem;
       border-radius: .5rem;
-      font-family: "Comic Sans MS", serif;
+      font-family: 'Luckiest Guy', cursive;
       text-transform: capitalize;
 
 
@@ -44,7 +49,7 @@ $main-color: #071c26;
       cursor: pointer;
       color: $main-color;
       font-size: 1.2rem;
-      font-family: "Comic Sans MS", serif;
+      font-family: 'DynaPuff', cursive;
       text-transform: capitalize;
 
 
@@ -59,17 +64,40 @@ $main-color: #071c26;
   }
 }
 
-.special-offer {
+.header-section {
   margin-top: 7rem;
+  padding: 0 7rem 0 7rem;
+  width: calc(100% - 14rem);
+
+  h1 {
+    text-transform: capitalize;
+    font-family: 'DynaPuff', cursive;
+    font-weight: bolder;
+    letter-spacing: .2rem;
+    color: white;
+    font-size: 1.7rem;
+  }
+
+  mat-divider {
+    width: 100%;
+    border-top-color: #b964f3;
+  }
+}
+
+.special-offer {
+  margin: 5rem 0 5rem 0;
   @include flex(flex-start, space-between, row);
   width: calc(100% - 14rem);
   padding: 0 7rem 0 7rem;
   height: 35rem;
 
   span {
-    font-family: Verdana, serif;
-    font-size: 1.2rem;
-    margin-top: .2rem;
+    font-size: 1.1rem;
+    margin-top: .5rem;
+    color: white;
+    font-family: 'Fredoka One', cursive;
+    letter-spacing: .1rem;
+
   }
 
   .first-offer {
@@ -84,11 +112,6 @@ $main-color: #071c26;
       background: url("https://petkeen.com/wp-content/uploads/2021/01/Multi-color-Siamese-fighting-fish-betta_panpilai-paipa_shutterstock.jpg") no-repeat center;
     }
 
-    &__text {
-      margin-top: .1rem;
-      text-decoration: none;
-      font-family: Verdana, serif;
-    }
 
   }
 
@@ -98,29 +121,141 @@ $main-color: #071c26;
     width: 50%;
     height: 100%;
 
-
     img {
       width: 15vw;
       height: 25vh;
     }
 
-    &__first-ad {
-      margin-left: 5rem;
-      @include flex(flex-start, flex-start, column);
-
-    }
-
-    &__second-ad {
-      margin-left: 5rem;
-      @include flex(flex-start, flex-start, column);
-
-    }
-
+    &__first-ad,
+    &__second-ad,
     &__third-ad {
       margin-left: 5rem;
       @include flex(flex-start, flex-start, column);
-
     }
   }
 
+}
+
+mat-horizontal-stepper {
+  background-color: transparent !important;
+  margin: 5rem 0 5rem 0;
+
+  .mat-step-icon {
+    opacity: 0;
+  }
+
+  .mat-horizontal-stepper-header {
+    display: block;
+    text-align: center;
+
+    fa-icon {
+      font-size: 1.4rem;
+      color: $star-color;
+    }
+  }
+}
+
+
+@mixin changeLineColour($index) {
+  .mat-horizontal-stepper-header {
+    & + .mat-stepper-horizontal-line:nth-child(#{$index}) {
+      background-color: $star-color !important;
+      transition: all 1s;
+    }
+  }
+}
+
+
+.last-edited-step-1 {
+  @include changeLineColour(2);
+}
+
+.last-edited-step-2 {
+  @include changeLineColour(2);
+  @include changeLineColour(4);
+}
+
+.last-edited-step-3 {
+  @include changeLineColour(2);
+  @include changeLineColour(4);
+  @include changeLineColour(6);
+}
+
+.last-edited-step-4 {
+  @include changeLineColour(2);
+  @include changeLineColour(4);
+  @include changeLineColour(6);
+  @include changeLineColour(8);
+}
+
+.top-first,
+.top-second,
+.top-third,
+.top-fourth,
+.top-fifth {
+  @include flex(flex-start, space-between, row);
+  padding-top: 2rem;
+  width: 100%;
+  height: 30rem;
+
+  div {
+    @include flex(center, center, column);
+    margin-left: 5.5rem;
+    width: 40%;
+
+    h2 {
+      color: #b8912f;
+      text-transform: uppercase;
+      font-family: "Mukta Mahee", serif;
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-family: Skia, serif;
+      font-size: 1rem;
+      text-indent: 1rem;
+      color: white;
+      letter-spacing: .1rem;
+    }
+
+    p:first-letter {
+      color: $star-color;
+      text-transform: uppercase;
+      font-family: Century Gothic, serif;
+      font-size: 1.6rem;
+    }
+  }
+
+  img {
+    width: 40%;
+    margin-right: 5.5rem;
+  }
+
+}
+
+.nums {
+  @include flex(flex-start, space-between, row);
+  margin: 5rem 7rem .5rem 7rem;
+  width: calc(100% - 14rem);
+  height: 12rem;
+
+  div {
+    height: 100%;
+    @include flex(center, space-around, column);
+    width: 30%;
+
+    p {
+      color: white;
+      font-size: 7rem;
+      font-family: 'Rubik Dirt', cursive;
+    }
+
+    span {
+      color: white;
+      font-size: 1.2rem;
+      text-transform: capitalize;
+      font-family: 'Rubik Dirt', cursive;
+      opacity: 0;
+    }
+  }
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=DynaPuff:wght@500&family=Roboto:ital,wght@0,400;1,300&family=Rubik+Dirt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Cormorant+Garamond:wght@300&family=DynaPuff:wght@500&family=Luckiest+Guy&family=Roboto:ital,wght@0,400;1,300&family=Rubik+Dirt&family=Rubik+Distressed&display=swap');
 @mixin flex($align, $justify, $dir) {
   display: flex;
   align-items: $align;
@@ -5,6 +7,8 @@
   flex-direction: $dir;
 }
 $main-color: #071c26;
+
+
 
 .main {
   @include flex(flex-start, center, column);
@@ -38,16 +42,16 @@ $main-color: #071c26;
       width: 40%;
       color: $main-color;
 
+
       div {
         text-transform: capitalize;
         font-size: 1.2rem;
-        font-family: Consolas, serif;
+        font-family: 'Bree Serif', serif;
         font-weight: 700;
         letter-spacing: .2rem;
         color: white;
       }
     }
-
     &__actions {
       @include flex(center, space-between, row);
       height: 100%;
@@ -58,7 +62,6 @@ $main-color: #071c26;
         font-size: 1.5rem;
         color: white;
       }
-
       span {
         .mat-badge-content {
           border-radius: .5rem;
@@ -66,8 +69,6 @@ $main-color: #071c26;
           background: red;
         }
       }
-
-
       .hamb {
         @include flex(center, space-between, row);
         cursor: pointer;
@@ -81,7 +82,6 @@ $main-color: #071c26;
       }
     }
   }
-
   .drop {
     position: absolute;
     top: 6rem;
@@ -94,14 +94,16 @@ $main-color: #071c26;
     z-index: -1000;
 
     a {
-      margin-top: 2rem;
+      margin-top: 1rem;
       text-transform: uppercase;
       text-decoration: none;
-      font-family: "Arial Black", serif;
+      font-family: 'Rubik Distressed', cursive;
       color: white;
       margin-bottom: 3.5rem;
       font-size: 2rem;
       cursor: pointer;
+      letter-spacing: .3rem;
     }
   }
 }
+

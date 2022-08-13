@@ -4,10 +4,10 @@
     <div class="header__content">
       <div>aquarium</div>
       <div>terrarium</div>
-      <div>cage</div>
+      <div routerLink="/products/p">cage</div>
     </div>
     <div class="header__actions">
-  <span matBadge="{{0}}" matBadgeOverlap="false" routerLink="/products">
+  <span matBadge="{{productService.products.length}}" matBadgeOverlap="false" routerLink="/products">
     <fa-icon [icon]="cart"></fa-icon>
   </span>
       <div class="hamb" (click)="hambRotate()">

@@ -1,20 +1,38 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Product} from "../product";
-import {BehaviorSubject, map, Observable, pluck} from "rxjs";
+import {BehaviorSubject, Observable, pluck} from "rxjs";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
-  products$: Observable<Product[]> = new BehaviorSubject([]);
+  products: Product[] = [];
+  products$ = new BehaviorSubject<Product[]>([]);
+  exist: boolean = false;
 
   constructor(
     private http: HttpClient
   ) {
   }
 
-  getProduct() {
+  getProducts(): Observable<Product[]> {
+    return this.products$.asObservable();
+  }
+
+  getProduct(): any {
     return this.http.get<Product[]>('/assets/product.json').pipe(
       pluck('products')
     )
   }
+
+  addToCart(prod: Product): void {
+    const exist = this.products.find(i => i.id === prod.id);
+    exist ? this.exist = true : (() => {
+      this.products.push(prod);
+      this.exist = false;
+    })();
+    this.products$.next(this.products);
+  }
+
 }

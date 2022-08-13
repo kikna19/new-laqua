@@ -8,6 +8,7 @@
 $border-color: rgb(43, 45, 48);
 $sec-color: rgb(40, 44, 75);
 
+
 .category {
   display: block;
   height: auto;
@@ -47,9 +48,9 @@ $sec-color: rgb(40, 44, 75);
     }
 
     input:focus {
-      box-shadow: 0 0 .4rem 0 rgba(255,165,0,1);
-      -webkit-box-shadow: 0 0 .4rem 0 rgba(255,165,0,1);
-      -moz-box-shadow: 0 0 .4rem 0 rgba(255,165,0,1);
+      box-shadow: 0 0 .4rem 0 rgba(255, 165, 0, 1);
+      -webkit-box-shadow: 0 0 .4rem 0 rgba(255, 165, 0, 1);
+      -moz-box-shadow: 0 0 .4rem 0 rgba(255, 165, 0, 1);
     }
   }
 
@@ -67,7 +68,7 @@ $sec-color: rgb(40, 44, 75);
         padding-top: 3rem;
         width: 100%;
         height: 20vh;
-        background: $sec-color;
+        border: .1rem solid #b964f3;
         margin-top: 1rem;
         border-radius: .5rem;
 
@@ -99,10 +100,6 @@ $sec-color: rgb(40, 44, 75);
           color: orange;
         }
 
-        .mat-slider-thumb-label-text {
-          color: #53dc53 !important;
-        }
-
         .mat-accent .mat-slider-thumb {
           height: 1.5rem;
           width: 1.5rem;
@@ -119,7 +116,7 @@ $sec-color: rgb(40, 44, 75);
 
         button {
           margin-top: 1rem;
-          background: #53dc53;
+          background: rgb(149, 187, 74);;
           text-transform: capitalize;
         }
       }
@@ -130,7 +127,7 @@ $sec-color: rgb(40, 44, 75);
         height: 30vh;
         padding-top: 3rem;
         overflow: scroll;
-        background: $sec-color;
+        border: .1rem solid #b964f3;
         border-radius: .5rem;
         margin-top: 2rem;
 
@@ -156,12 +153,34 @@ $sec-color: rgb(40, 44, 75);
           color: #ffffff;
         }
       }
+
+      &__cart {
+        @include flex(center, space-around, row);
+        height: 5vh;
+        width: 100%;
+        border: .1rem solid #b964f3;
+        margin-top: 5vh;
+        color: white;
+        font-family: 'GaroaHackerClubeBold', monospace;
+        letter-spacing: .1rem;
+        font-size: 1rem;
+        text-transform: capitalize;
+        border-radius: .5rem;
+
+          fa-icon{
+            color: rgb(149, 187, 74);
+            cursor: pointer;
+            font-size: 1.1rem;
+          }
+      }
     }
 
     &__products {
       @include flex(flex-start, flex-start, row);
       flex-wrap: wrap;
       width: 80%;
+      height: 75vh;
+      overflow: scroll;
 
       &__item {
         border: .01rem solid $border-color;
@@ -217,3 +236,4 @@ $sec-color: rgb(40, 44, 75);
     }
   }
 }
+

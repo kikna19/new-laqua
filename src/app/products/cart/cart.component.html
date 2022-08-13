@@ -1,4 +1,4 @@
-<mat-toolbar-row class="category">
+<mat-toolbar-row class="category" xmlns="http://www.w3.org/1999/html">
   <div class="category__search">
     <p>showing 6 of {{products.length}}</p>
     <input type="text" placeholder="search by name..." #search [(ngModel)]="inputValue">
@@ -15,7 +15,7 @@
           <span>price: {{item.price + ' '}}<span class="gel">GEL</span></span>
         </div>
         <mat-card-actions class="category__result__products__item__btn">
-          <button mat-button>add to cart</button>
+          <button mat-button (click)="addToCart(item)">add to cart</button>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -48,6 +48,11 @@
           freshwater fish
         </div>
       </div>
+      <div class="category__result__select__cart">
+          <span>view cart</span>
+          <fa-icon [icon]="view" routerLink="/products/cart"></fa-icon>
+      </div>
     </div>
   </div>
 </mat-toolbar-row>
+
