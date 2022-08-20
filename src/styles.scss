@@ -1,4 +1,25 @@
-html, body { height: 100%}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: rgb(25, 28, 31)
+html,
+body {
+  height: 100%;
+
+  ::-webkit-scrollbar {
+    width: .1rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 .2rem rgb(25, 28, 31);
+    border-radius: .5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #b964f3;
+    border-radius: .5rem;
+  }
+
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: rgb(25, 28, 31);
 }

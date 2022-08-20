@@ -1,14 +1,13 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
+  ElementRef, OnInit,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import gsap from "gsap";
-import {faFish} from "@fortawesome/free-solid-svg-icons/faFish";
+import { faFish } from "@fortawesome/free-solid-svg-icons/faFish";
 import {
-  catchError,
   concatMap,
   filter, finalize,
   fromEvent,
@@ -16,8 +15,9 @@ import {
   map,
   Observable,
   switchMap,
-  take, tap
+  take,
 } from "rxjs";
+import { scrollAnimate, textAnimate, textSplitAnimate } from '../shared/gsap/gsap.animation';
 
 @Component({
   selector: 'app-main',
@@ -25,16 +25,29 @@ import {
   styleUrls: ['./main.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class MainComponent implements AfterViewInit {
+export class MainComponent implements OnInit, AfterViewInit {
   btnTl = gsap.timeline();
-  @ViewChild('btn', {static: true}) btn!: ElementRef;
-  @ViewChild('parrots', {static: true}) parrots!: ElementRef;
-  @ViewChild('fishes', {static: true}) fishes!: ElementRef;
-  @ViewChild('pets', {static: true}) pets!: ElementRef;
-  @ViewChild('c', {static: true}) c!: ElementRef;
+  @ViewChild('btn', { static: true }) btn!: ElementRef;
+  @ViewChild('parrots', { static: true }) parrots!: ElementRef;
+  @ViewChild('fishes', { static: true }) fishes!: ElementRef;
+  @ViewChild('pets', { static: true }) pets!: ElementRef;
+  @ViewChild('c', { static: true }) c!: ElementRef;
+  @ViewChild('friend', { static: true }) friend!: ElementRef;
+  @ViewChild('btnText', { static: true }) btnText!: ElementRef;
+  @ViewChild('offerHeader', { static: true }) offerHeader!: ElementRef;
+  @ViewChild('offer', { static: true, read: ElementRef }) offer!: ElementRef;
+  @ViewChild('stepperHeader', { static: true }) stepperHeader!: ElementRef;
+  @ViewChild('productsHeader', { static: true }) productsHeader!: ElementRef;
+  @ViewChild('stepperItem', { static: true }) stepperItem!: ElementRef
   numText = <HTMLCollection>document.getElementsByClassName('num-text');
   fish = faFish;
 
+
+
+  ngOnInit(): void {
+    textSplitAnimate([this.friend.nativeElement], 0, 1.1, .1);
+    textAnimate([this.btnText.nativeElement, this.offerHeader.nativeElement]);
+  }
 
   ngAfterViewInit(): void {
     fromEvent(document, 'scroll').pipe(
@@ -43,6 +56,13 @@ export class MainComponent implements AfterViewInit {
       take(1),
       concatMap(_ => this.numsShow()),
     ).subscribe();
+
+    scrollAnimate([
+      this.offer.nativeElement,
+      this.stepperHeader.nativeElement,
+      this.stepperItem.nativeElement,
+      this.productsHeader.nativeElement
+    ]);
   }
 
   getScroll(e: any): number {

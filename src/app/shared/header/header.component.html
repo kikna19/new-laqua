@@ -2,9 +2,9 @@
   <div class="header" [@header]="header1">
     <div class="header__logo" routerLink="/">laqua</div>
     <div class="header__content">
-      <div>aquarium</div>
-      <div>terrarium</div>
-      <div routerLink="/products/p">cage</div>
+      <div #aquarium>aquarium</div>
+      <div #terrarium>terrarium</div>
+      <div (click)="goToCage()" #cage>cage</div>
     </div>
     <div class="header__actions">
   <span matBadge="{{productService.products.length}}" matBadgeOverlap="false" routerLink="/products">

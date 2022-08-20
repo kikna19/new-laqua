@@ -1,42 +1,40 @@
-<mat-toolbar-row class="category" xmlns="http://www.w3.org/1999/html">
+<mat-toolbar-row class="category">
   <div class="category__search">
-    <p>showing 6 of {{products.length}}</p>
+    <p>showing {{itemNums}} of {{showItemNums}}</p>
     <input type="text" placeholder="search by name..." #search [(ngModel)]="inputValue">
   </div>
   <div class="category__result">
-    <div class="category__result__products" *ngIf="products.length; else noProducts">
-      <mat-card class="category__result__products__item" *ngFor="let item of products">
-        <mat-card-header>
-          <mat-card-title class="category__result__products__item__header">{{item.name}}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image
-             [src]="item.img">
-        <div mat-card-content class="category__result__products__item__details">
-          <span>price: {{item.price + ' '}}<span class="gel">GEL</span></span>
-        </div>
-        <mat-card-actions class="category__result__products__item__btn">
-          <button mat-button (click)="addToCart(item)">add to cart</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-    <ng-template #noProducts>
-      <p>no products</p>
-    </ng-template>
+      <div class="category__result__products" appScroll (scrollHeight)="showMoreItems()" *ngIf="products.length; else noProducts">
+        <mat-card class="category__result__products__item" *ngFor="let item of products">
+          <mat-card-header>
+            <mat-card-title class="category__result__products__item__header">{{item.name}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image [src]="item.img">
+          <div mat-card-content class="category__result__products__item__details">
+            <span>price: {{item.price + ' '}}<span class="gel">GEL</span></span>
+          </div>
+          <mat-card-actions class="category__result__products__item__btn">
+            <button mat-button (click)="addToCart(item)">add to cart</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <ng-template #noProducts>
+        <p>no products</p>
+      </ng-template>
     <div class="category__result__select">
       <div class="category__result__select__price">
         <h1>price range</h1>
-        <mat-slider
-          thumbLabel
-          [(ngModel)]="priceVal"
-          [displayWith]="filterValue"
+        <mat-slider thumbLabel
+         [(ngModel)]="priceVal"
+         [displayWith]="filterValue"
           step="10"
-          min="0"
+           min="0"
           max="500"
-          aria-label="units">
+         aria-label="units">
         </mat-slider>
         <button (click)="priceFilter(priceVal)" mat-button>search</button>
       </div>
-      <div class="category__result__select__species">
+      <div class="category__result__select__species" #main>
         <h1>categories</h1>
         <div matRipple class="mat-elevation-z4" matRippleColor="orange" (click)="speciesFilter('parrot')">
           parrot
@@ -49,10 +47,10 @@
         </div>
       </div>
       <div class="category__result__select__cart">
-          <span>view cart</span>
-          <fa-icon [icon]="view" routerLink="/products/cart"></fa-icon>
+        <span>view cart</span>
+        <fa-icon [icon]="view" routerLink="/products/cart"></fa-icon>
+
       </div>
     </div>
   </div>
 </mat-toolbar-row>
-

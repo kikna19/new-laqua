@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "laqua-eff58": {
+      "hosting": {
+        "laqua": [
+          "laqua-eff58"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "laqua-eff58"
+  }
+}

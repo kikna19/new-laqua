@@ -1,20 +1,35 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  ViewChildrenDecorator,
+  ViewContainerRef,
+  ViewEncapsulation
+} from '@angular/core';
 import {ProductService} from "../services/product.service";
 import {
   debounceTime,
   distinctUntilChanged,
   filter,
+  from,
   fromEvent,
   map,
   Observable,
   pluck,
   Subscription,
   switchMap,
+  take,
+  tap,
 } from "rxjs";
 import {Product} from "../product";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {CartAlertComponent} from "../../shared/cart-alert/cart-alert.component";
 import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -23,6 +38,7 @@ import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
   encapsulation: ViewEncapsulation.None,
 })
 export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild('main', {read: ElementRef, static: false}) main!: ElementRef<any>;
   @ViewChild('search', {static: true}) input!: ElementRef<HTMLInputElement>;
   inputValue: string = '';
   products: Product[] = [];
@@ -30,7 +46,8 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
   products$!: Observable<Product[]>;
   priceVal: number = 0;
   view = faEye;
-
+  itemNums: number = 6;
+  showItemNums!: number;
 
   constructor(
     private productService: ProductService,
@@ -39,10 +56,28 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.products$ = <Observable<Product[]>>this.productService.getProduct();
+    this.products$ = <Observable<Product[]>>this.productService.getProduct().pipe(
+      map((arr: Product[]): Product[] => {
+        this.showItemNums = arr.length;
+        return arr.slice(0, this.itemNums);
+      })
+    );
     this.sub$ = this.products$.subscribe(
-      res => this.products = res
+      res => {
+        this.products = res;
+      }
     )
+  }
+
+  showMoreItems(): void {
+    this.itemNums += 2;
+    this.products$.pipe(
+      map((i: Product[]) => i.slice(0, this.itemNums))
+    ).subscribe(
+      res => this.products = res
+    );
+
+
   }
 
   ngAfterViewInit(): void {
@@ -58,10 +93,9 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
     ).subscribe(
       res => this.products = res
     );
-
   }
 
-  filterValue(val: number): any {
+  filterValue(val: number): string | number {
     if (val <= 500) {
       return val + '₾'
     }
@@ -86,7 +120,7 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub$.unsubscribe();
+    this.sub$?.unsubscribe()
   }
 
 
@@ -104,9 +138,8 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
     this.snackBar.openFromComponent(CartAlertComponent, {
       data: [msg, msgClass],
       duration: 2000,
-      horizontalPosition: 'end',
+      horizontalPosition: 'start',
     });
-
   }
 
 

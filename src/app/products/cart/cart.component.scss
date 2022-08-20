@@ -9,9 +9,11 @@ $border-color: rgb(43, 45, 48);
 $sec-color: rgb(40, 44, 75);
 
 
+
+
 .category {
   display: block;
-  height: auto;
+  height: calc(100% - 10rem);
   width: calc(100% - 10rem);
   margin: 0 5rem 0 5rem;
   color: white;
@@ -57,6 +59,7 @@ $sec-color: rgb(40, 44, 75);
   &__result {
     @include flex(flex-start, space-between, row);
     width: 100%;
+    height: 90%;
 
     &__select {
       display: block;
@@ -126,7 +129,8 @@ $sec-color: rgb(40, 44, 75);
         width: 100%;
         height: 30vh;
         padding-top: 3rem;
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
         border: .1rem solid #b964f3;
         border-radius: .5rem;
         margin-top: 2rem;
@@ -179,9 +183,10 @@ $sec-color: rgb(40, 44, 75);
       @include flex(flex-start, flex-start, row);
       flex-wrap: wrap;
       width: 80%;
-      height: 75vh;
-      overflow: scroll;
-
+      height: 100%;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    
       &__item {
         border: .01rem solid $border-color;
         margin: 1rem;

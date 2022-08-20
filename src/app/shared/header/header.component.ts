@@ -14,6 +14,9 @@ import {faCircleNotch} from "@fortawesome/free-solid-svg-icons/faCircleNotch";
 import gsap from "gsap";
 import {DOCUMENT} from "@angular/common";
 import { ProductService } from 'src/app/products/services/product.service';
+import { textAnimate } from '../gsap/gsap.animation';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-header',
@@ -53,27 +56,40 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   @ViewChild('acce', {static: true}) acce!: ElementRef
   @ViewChild('spec', {static: true}) spec!: ElementRef
   @ViewChild('aboutF', {static: true}) aboutF!: ElementRef
-  @ViewChild('cont', {static: true}) cont!: ElementRef
+  @ViewChild('cont', {static: true}) cont!: ElementRef;
+  @ViewChild('aquarium', {static: true}) aqua!: ElementRef;
+  @ViewChild('terrarium', {static: true}) terr!: ElementRef;
+  @ViewChild('cage', {static: true}) cage!: ElementRef;
   tl = gsap.timeline({reversed: true});
-  prodLength: number = 0;
+
 
   constructor(
     private renderer: Renderer2,
     private rendererFactory: RendererFactory2,
     @Inject(DOCUMENT) private document: Document,
-    public productService: ProductService
+    public productService: ProductService,
+    private router: Router
   ) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
   }
 
   ngOnInit(): void {
+    textAnimate([
+      this.aqua.nativeElement,
+      this.terr.nativeElement,
+      this.cage.nativeElement,
+    ])
 
+  
   }
+
+  goToCage(): void{
+    this.router.navigate(['/products/p'])
+  }
+
 
   ngAfterViewInit(): void {
     this.dropText();
-  
-
   }
 
 

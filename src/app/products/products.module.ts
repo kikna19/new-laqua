@@ -10,20 +10,14 @@ import {FormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatRippleModule} from "@angular/material/core";
 import { PurchaseComponent } from './purchase/purchase.component';
-import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {MatDividerModule} from "@angular/material/divider";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {MatIconModule} from "@angular/material/icon";
+import {MatDividerModule} from "@angular/material/divider";
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {SharedModule} from "../shared/shared.module";
 
 const routes: Routes = [
-  {
-    path: '', component: CartComponent,
-    title: 'Products'
-  },
-  {
-    path: 'cart', component: PurchaseComponent,
-    title: 'Cart'
-  }
+  {path: '', component: CartComponent},
+  {path: 'p', component: PurchaseComponent}
 ]
 
 @NgModule({
@@ -41,10 +35,10 @@ const routes: Routes = [
         FormsModule,
         MatSelectModule,
         MatRippleModule,
-        MatSnackBarModule,
-        MatDividerModule,
         FontAwesomeModule,
-        MatIconModule,
+        MatDividerModule,
+        MatSnackBarModule,
+        SharedModule
     ],
 })
 export class ProductsModule { }

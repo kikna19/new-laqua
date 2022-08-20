@@ -9,6 +9,10 @@ import {RouterModule} from "@angular/router";
 import {FooterComponent} from "./footer/footer.component";
 import {CartAlertComponent} from './cart-alert/cart-alert.component';
 import {MatIconModule} from "@angular/material/icon";
+import { SpinnerComponent } from './loader/spinner/spinner.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
+import { ScrollDirective } from './directives/scroll.directive';
 
 
 @NgModule({
@@ -16,10 +20,14 @@ import {MatIconModule} from "@angular/material/icon";
     HeaderComponent,
     FooterComponent,
     CartAlertComponent,
+    SpinnerComponent,
+    ScrollDirective,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
+    SpinnerComponent,
+    ScrollDirective
   ],
   imports: [
     CommonModule,
@@ -29,8 +37,8 @@ import {MatIconModule} from "@angular/material/icon";
     MatBadgeModule,
     RouterModule,
     MatIconModule,
+    NgxSpinnerModule,
   ],
-
 })
 export class SharedModule {
 }

@@ -1,42 +1,39 @@
 <div class="cover">
   <div class="cover__main">
-    <h1>best friend</h1>
-    <button (mouseenter)="btnAnimationIn()" (mouseleave)="btnAnimationOut()">
+    <h1 #friend>best friend</h1>
+    <button (mouseenter)="btnAnimationIn()" (mouseleave)="btnAnimationOut()" #btnText>
       find
       <span #btn></span>
     </button>
   </div>
 </div>
 <div class="header-section">
-  <h1>special offer</h1>
+  <h1 #offerHeader>special offer</h1>
   <mat-divider></mat-divider>
-
 </div>
-<mat-toolbar-row class="special-offer">
+<mat-toolbar-row class="special-offer" #offer>
   <div class="first-offer">
     <div class="first-offer__img"></div>
     <span class="first-offer__text">Looking For a Betta Fish?</span>
   </div>
   <div class="second-offer">
     <div class="second-offer__first-ad">
-      <img id="second-ad"
-           src="https://nationaltoday.com/wp-content/uploads/2022/06/Clean-Your-Aquarium-Day.jpg">
+      <img id="second-ad" src="https://nationaltoday.com/wp-content/uploads/2022/06/Clean-Your-Aquarium-Day.jpg">
       <span>Brand New Product</span>
     </div>
     <div class="second-offer__second-ad">
       <img id="third-ad"
-           src="https://www.thesprucepets.com/thmb/5gt7Ue6cos4JFTyC1QQ2IeVJNE0=/1398x1398/smart/filters:no_upscale()/Fisheseating-GettyImages-940731024-5c2814d2c9e77c0001b0ab83.jpg">
+        src="https://www.thesprucepets.com/thmb/5gt7Ue6cos4JFTyC1QQ2IeVJNE0=/1398x1398/smart/filters:no_upscale()/Fisheseating-GettyImages-940731024-5c2814d2c9e77c0001b0ab83.jpg">
       <span>Right Type of Food</span>
     </div>
     <div class="second-offer__third-ad">
-      <img id="fourth-ad"
-           src="https://aquariumadviser.com/wp-content/uploads/2018/10/Rainbow-Shark.jpg">
+      <img id="fourth-ad" src="https://aquariumadviser.com/wp-content/uploads/2018/10/Rainbow-Shark.jpg">
       <span>70% OFF</span>
     </div>
   </div>
 </mat-toolbar-row>
 <div class="header-section">
-  <h1>top 5 fish in store</h1>
+  <h1 #stepperHeader>top 5 fish in store</h1>
   <mat-divider></mat-divider>
 </div>
 <mat-horizontal-stepper #stepper ngClass="{{'last-edited-step-' + stepper.selectedIndex}}">
@@ -44,7 +41,7 @@
     <ng-template matStepLabel>
       <fa-icon [icon]="fish"></fa-icon>
     </ng-template>
-    <div class="top-first">
+    <div class="top-first" #stepperItem>
       <div>
         <h2>french angel fish</h2>
         <p>this fish lives primarily in the reefs around the Caribbean seas,
@@ -125,7 +122,7 @@
   </mat-step>
 </mat-horizontal-stepper>
 <div class="header-section">
-  <h1>all products</h1>
+  <h1 #productsHeader>all products</h1>
   <mat-divider></mat-divider>
 </div>
 <div class="nums">
