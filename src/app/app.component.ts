@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {NgxSpinnerService} from 'ngx-spinner';
-import {NavigationStart, Router} from "@angular/router";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NavigationEnd, NavigationStart, Router } from "@angular/router";
+
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,7 @@ import {NavigationStart, Router} from "@angular/router";
 })
 export class AppComponent implements AfterViewInit {
   title = 'laqua';
-
+  loaded: boolean = false;
 
   constructor(
     private ngx: NgxSpinnerService,
@@ -18,13 +19,17 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // this.router.events.subscribe((e: any) => {
-    //   if (e instanceof NavigationStart) {
-    //   this.ngx.show();
-    //   }
-    // })
-    // setTimeout(() => {
-    //   this.ngx.hide();
-    // }, 3000)
+    this.router.events.subscribe((e: any) => {
+      if (e instanceof NavigationStart) {
+        this.ngx.show();
+        this.loaded = false;
+      }
+      if (e instanceof NavigationEnd) {
+        setTimeout(() => {
+          this.ngx.hide();
+          this.loaded = true;
+        }, 2000)
+      }
+    })
   }
 }

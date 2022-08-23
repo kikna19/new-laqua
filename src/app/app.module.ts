@@ -17,6 +17,9 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideDatabase(() => getDatabase()),
     NgxSpinnerModule,
+    MatSliderModule,
   ],
   schemas:[CUSTOM_ELEMENTS_SCHEMA],
 

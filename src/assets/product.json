@@ -55,6 +55,20 @@
       "id": 7,
       "price": 100,
       "img": "https://zooclub.ambebi.ge/images/stories/2014/aprili/frinvelebi/korelaa.jpg"
+    },
+    {
+      "species": "freshwater fish",
+      "name": "shark",
+      "id": 7,
+      "price": 100,
+      "img": "https://zooclub.ambebi.ge/images/stories/2014/aprili/frinvelebi/korelaa.jpg"
+    },
+    {
+      "species": "freshwater fish",
+      "name": "shark",
+      "id": 7,
+      "price": 100,
+      "img": "https://zooclub.ambebi.ge/images/stories/2014/aprili/frinvelebi/korelaa.jpg"
     }
   ]
 }

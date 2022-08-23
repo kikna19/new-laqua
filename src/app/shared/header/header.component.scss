@@ -87,7 +87,7 @@ $main-color: #071c26;
     position: absolute;
     top: 6rem;
     @include flex(flex-start, flex-start, column);
-    background-color: #071c26;
+    background: rgb(25, 28, 31);
     width: calc(100% - 3.8rem);
     height: calc(100% - 8rem);
     padding-top: 2rem;

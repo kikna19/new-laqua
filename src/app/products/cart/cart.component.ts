@@ -1,35 +1,28 @@
 import {
-  AfterViewInit,
+  AfterViewChecked,
   ChangeDetectorRef,
   Component,
-  ElementRef,
   OnDestroy,
   OnInit,
-  ViewChild,
-  ViewChildrenDecorator,
+  QueryList,
+  ViewChildren,
   ViewContainerRef,
   ViewEncapsulation
 } from '@angular/core';
-import {ProductService} from "../services/product.service";
+import { ProductService } from "../services/product.service";
 import {
-  debounceTime,
-  distinctUntilChanged,
-  filter,
-  from,
-  fromEvent,
   map,
   Observable,
-  pluck,
   Subscription,
-  switchMap,
-  take,
-  tap,
 } from "rxjs";
-import {Product} from "../product";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {CartAlertComponent} from "../../shared/cart-alert/cart-alert.component";
-import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
-import {of} from 'rxjs';
+import { Product } from "../product";
+import { MatSnackBar } from "@angular/material/snack-bar";
+import { CartAlertComponent } from "../../shared/cart-alert/cart-alert.component";
+import { faEye } from "@fortawesome/free-solid-svg-icons/faEye";
+import { LoaderService } from 'src/app/shared/loader/loader.service';
+import { filterArr } from 'src/app/shared/types/filter';
+import { CardComponent } from 'src/app/shared/card/card.component';
+import { tl } from 'src/app/shared/gsap/gsap.animation';
 
 @Component({
   selector: 'app-cart',
@@ -37,63 +30,51 @@ import {of} from 'rxjs';
   styleUrls: ['./cart.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
-  @ViewChild('main', {read: ElementRef, static: false}) main!: ElementRef<any>;
-  @ViewChild('search', {static: true}) input!: ElementRef<HTMLInputElement>;
-  inputValue: string = '';
+export class CartComponent implements OnInit, AfterViewChecked, OnDestroy {
+
+  @ViewChildren('comp', { read: ViewContainerRef }) comp!: QueryList<ViewContainerRef>;
   products: Product[] = [];
   sub$!: Subscription;
   products$!: Observable<Product[]>;
   priceVal: number = 0;
   view = faEye;
-  itemNums: number = 6;
+  itemNums!: number;
   showItemNums!: number;
+  loader: boolean = false;
 
   constructor(
     private productService: ProductService,
     private snackBar: MatSnackBar,
+    public loaderService: LoaderService,
+    private cdr: ChangeDetectorRef
   ) {
+
   }
 
   ngOnInit(): void {
-    this.products$ = <Observable<Product[]>>this.productService.getProduct().pipe(
-      map((arr: Product[]): Product[] => {
-        this.showItemNums = arr.length;
-        return arr.slice(0, this.itemNums);
-      })
-    );
-    this.sub$ = this.products$.subscribe(
-      res => {
+    this.products$ = <Observable<Product[]>>this.productService.getProduct();
+    this.sub$ = this.products$
+    .subscribe({
+      next: (res) => {
         this.products = res;
+        this.itemNums = this.products.length =  this.showItemNums 
       }
-    )
+    })
   }
 
-  showMoreItems(): void {
-    this.itemNums += 2;
-    this.products$.pipe(
-      map((i: Product[]) => i.slice(0, this.itemNums))
-    ).subscribe(
-      res => this.products = res
-    );
-
-
+  g(): void {
+    this.comp.map((vcr: ViewContainerRef) => {
+      vcr.clear();
+      const f = vcr.createComponent(CardComponent);
+      f.instance.data = this.products;
+      this.cdr.detectChanges();
+    })
   }
 
-  ngAfterViewInit(): void {
-    fromEvent(this.input.nativeElement, 'keyup').pipe(
-      pluck('target', 'value'),
-      filter((val: any) => val.trim().length !== 0),
-      filter((val: any) => val.length >= 0),
-      distinctUntilChanged(),
-      debounceTime(1000),
-      switchMap(_ => this.products$.pipe(
-        map((arr: Product[]) => arr.filter((i: Product) => i.name.includes(this.inputValue.trim())))
-      ))
-    ).subscribe(
-      res => this.products = res
-    );
+  ngAfterViewChecked(): void {
+    this.g();
   }
+
 
   filterValue(val: number): string | number {
     if (val <= 500) {
@@ -103,24 +84,30 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   priceFilter(price: number): void {
-    this.products$.pipe(
-      filter(_ => price > 0),
-      map((i: Product[]) => i.filter((i: Product) => i.price <= price)),
-    ).subscribe(
-      res => this.products = res
-    )
+    filterArr(this.products$, price).pipe(
+      this.loaderService.loading
+    ).subscribe({
+      next: (res) => {
+        this.products = res;
+        this.itemNums = this.products.length;
+      }
+    })
   }
 
   speciesFilter(specie: string): void {
-    this.products$.pipe(
-      map((i: Product[]) => i.filter((i: Product) => i.species === specie)),
-    ).subscribe(
-      res => this.products = res
-    )
+    filterArr(this.products$, specie).pipe(
+      this.loaderService.loading
+    ).subscribe({
+      next: (res) => {
+        this.products = res;
+        this.itemNums = this.products.length;
+      }
+    })
   }
 
   ngOnDestroy(): void {
-    this.sub$?.unsubscribe()
+    this.sub$?.unsubscribe();
+    tl.clear();
   }
 
 
@@ -141,6 +128,4 @@ export class CartComponent implements OnInit, AfterViewInit, OnDestroy {
       horizontalPosition: 'start',
     });
   }
-
-
 }

@@ -13,6 +13,9 @@ import { SpinnerComponent } from './loader/spinner/spinner.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/compiler';
 import { ScrollDirective } from './directives/scroll.directive';
+import { ComponentDirective } from './directives/component.directive';
+import { CardComponent } from './card/card.component';
+import { MatCardMdImage, MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -22,12 +25,15 @@ import { ScrollDirective } from './directives/scroll.directive';
     CartAlertComponent,
     SpinnerComponent,
     ScrollDirective,
+    ComponentDirective,
+    CardComponent,
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     SpinnerComponent,
-    ScrollDirective
+    ScrollDirective,
+    ComponentDirective,
   ],
   imports: [
     CommonModule,
@@ -38,6 +44,7 @@ import { ScrollDirective } from './directives/scroll.directive';
     RouterModule,
     MatIconModule,
     NgxSpinnerModule,
+    MatCardModule
   ],
 })
 export class SharedModule {

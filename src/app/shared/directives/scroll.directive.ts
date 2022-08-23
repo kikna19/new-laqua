@@ -15,7 +15,9 @@ export class ScrollDirective {
     } = e.target;
     let target = scrollTop / (scrollHeight - clientHeight) * 100;
 
-    if (target == 100)
+    console.log(target);
+
+    if (target.toFixed(0) >= '99')
       this.scrollHeight.emit(true);
   }
 

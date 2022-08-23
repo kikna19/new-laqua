@@ -23,14 +23,6 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   animations: [
-    trigger('header', [
-      state('header2', style({})),
-      state('header3', style({
-        backgroundColor: '#071c26',
-      })),
-      transition('header2 => header3', animate('1s ease-in-out')),
-      transition('header3 => header2', animate('1s ease-in-out')),
-    ]),
     trigger('drop', [
       state('drop2', style({
         opacity: 0,
@@ -47,7 +39,6 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
   cart = faBasketShopping;
-  header1 = 'header2';
   drop1 = 'drop2';
   dots = faCircleNotch;
   @ViewChild('marineF', {static: true}) marineF!: ElementRef
@@ -79,8 +70,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       this.terr.nativeElement,
       this.cage.nativeElement,
     ])
-
-  
   }
 
   goToCage(): void{
@@ -113,15 +102,12 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       y: 10,
       autoAlpha: -3,
       ease: 'power2.easeOut',
-      stagger: {
-        amount: .8,
-      },
+      stagger: .2,
     })
   }
 
 
   hambRotate(): void {
-    this.header1 = this.header1 === 'header2' ? 'header3' : 'header2';
     this.drop1 = this.drop1 === 'drop2' ? 'drop3' : 'drop2';
     this.tl.reversed() ? this.tl.play() : this.tl.reverse();
     this.disableScroll();

@@ -14,6 +14,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {MatDividerModule} from "@angular/material/divider";
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import {SharedModule} from "../shared/shared.module";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 const routes: Routes = [
   {path: '', component: CartComponent},
@@ -38,7 +39,8 @@ const routes: Routes = [
         FontAwesomeModule,
         MatDividerModule,
         MatSnackBarModule,
-        SharedModule
+        SharedModule,
+        MatProgressBarModule
     ],
 })
 export class ProductsModule { }

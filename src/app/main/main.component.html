@@ -1,7 +1,11 @@
 <div class="cover">
   <div class="cover__main">
     <h1 #friend>best friend</h1>
-    <button (mouseenter)="btnAnimationIn()" (mouseleave)="btnAnimationOut()" #btnText>
+    <button
+    routerLink="/products"
+     (mouseenter)="btnAnimationIn()" 
+     (mouseleave)="btnAnimationOut()" 
+     #btnText>
       find
       <span #btn></span>
     </button>
