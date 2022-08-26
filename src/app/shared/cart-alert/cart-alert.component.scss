@@ -8,19 +8,19 @@
 }
 
 .container {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  height: 100%;
+  display: block;
+  line-height: 1.8rem;
+  height: 1.8rem;
+  padding-top: .2rem;
 }
 
 .mat-snack-bar-container {
+  display: block;
   margin-left: 7rem !important;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   letter-spacing: .3rem;
   font-size: 1rem;
   width: auto;
-  /*font-family: 'DynaPuff', serif;*/
   font-family: 'Luckiest Guy', cursive;
   text-transform: uppercase;
 }

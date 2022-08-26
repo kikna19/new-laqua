@@ -5,6 +5,24 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 export const tl = gsap.timeline();
 const st = new SplitText({ words: 1, chars: 1, spacing: "1rem" });
+export const colors = [
+  '61,137,30',
+  '228, 174, 197',
+  '36, 58, 115',
+  '221,126,0',
+  '0,98,127',
+  '178, 80, 104',
+  '255, 99, 99',
+  '106,72,113',
+  '236, 190, 14',
+  '105,105,0',
+  '255, 159, 41',
+  '58, 176, 255',
+  '125, 30, 106'
+];
+
+
+
 
 export const textSplitAnimate = (word: HTMLElement[], delay: number, duration: number, stagger: number): void => {
   tl.fromTo(st.split(word).chars, {
@@ -32,7 +50,7 @@ export const textAnimate = <T>(el: T[]): void => {
     duration: .8,
     ease: "power4.out",
     stagger: .5,
-  },'>')
+  }, '>')
 }
 
 export const scrollAnimate = (el: HTMLDivElement[]): void => {

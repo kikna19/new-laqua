@@ -4,19 +4,21 @@ import {
   ElementRef,
   Inject,
   OnInit,
+  QueryList,
   Renderer2,
   RendererFactory2,
-  ViewChild
+  ViewChild,
+  ViewChildren
 } from '@angular/core';
-import {animate, state, style, transition, trigger} from "@angular/animations";
-import {faBasketShopping} from "@fortawesome/free-solid-svg-icons/faBasketShopping";
-import {faCircleNotch} from "@fortawesome/free-solid-svg-icons/faCircleNotch";
+import { animate, state, style, transition, trigger } from "@angular/animations";
+import { faBasketShopping } from "@fortawesome/free-solid-svg-icons/faBasketShopping";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons/faCircleNotch";
 import gsap from "gsap";
-import {DOCUMENT} from "@angular/common";
+import { DOCUMENT } from "@angular/common";
 import { ProductService } from 'src/app/products/services/product.service';
-import { textAnimate } from '../gsap/gsap.animation';
+import { textAnimate, colors } from '../gsap/gsap.animation';
 import { Router } from '@angular/router';
-
+import { SplitText } from 'src/assets/splitText';
 
 @Component({
   selector: 'app-header',
@@ -41,18 +43,22 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   cart = faBasketShopping;
   drop1 = 'drop2';
   dots = faCircleNotch;
-  @ViewChild('marineF', {static: true}) marineF!: ElementRef
-  @ViewChild('g', {static: true, read: ElementRef}) g!: ElementRef
-  @ViewChild('fresh', {static: true}) fresh!: ElementRef
-  @ViewChild('acce', {static: true}) acce!: ElementRef
-  @ViewChild('spec', {static: true}) spec!: ElementRef
-  @ViewChild('aboutF', {static: true}) aboutF!: ElementRef
-  @ViewChild('cont', {static: true}) cont!: ElementRef;
-  @ViewChild('aquarium', {static: true}) aqua!: ElementRef;
-  @ViewChild('terrarium', {static: true}) terr!: ElementRef;
-  @ViewChild('cage', {static: true}) cage!: ElementRef;
-  tl = gsap.timeline({reversed: true});
+  @ViewChild('aquadrop', { static: true }) aquadrop!: ElementRef;
+  @ViewChild('terrdrop', { static: true }) terrdrop!: ElementRef;
+  @ViewChild('cagedrop', { static: true }) cagedrop!: ElementRef
+  @ViewChild('marineF', { static: true }) marineF!: ElementRef
+  @ViewChild('g', { static: true, read: ElementRef }) g!: ElementRef
+  @ViewChild('acce', { static: true }) acce!: ElementRef
+  @ViewChild('spec', { static: true }) spec!: ElementRef
+  @ViewChild('aboutF', { static: true }) aboutF!: ElementRef
+  @ViewChild('cont', { static: true }) cont!: ElementRef;
+  @ViewChild('aquarium', { static: true }) aqua!: ElementRef;
+  @ViewChild('terrarium', { static: true }) terr!: ElementRef;
+  @ViewChild('cage', { static: true }) cage!: ElementRef;
+  @ViewChild('logo', { static: true }) logo!: ElementRef;
 
+  tl = gsap.timeline({ reversed: true });
+  st = new SplitText({ words: 1, chars: 1, spacing: "1rem" });
 
   constructor(
     private renderer: Renderer2,
@@ -69,29 +75,39 @@ export class HeaderComponent implements OnInit, AfterViewInit {
       this.aqua.nativeElement,
       this.terr.nativeElement,
       this.cage.nativeElement,
-    ])
+    ]);
   }
 
-  goToCage(): void{
+  goToCage(): void {
     this.router.navigate(['/products/p'])
   }
 
 
   ngAfterViewInit(): void {
     this.dropText();
+    this.randomColors();
   }
 
-
+  randomColors(): void {
+    this.st.split([this.logo.nativeElement]).chars.forEach(e => {
+      let random = Math.floor(Math.random() * colors.length)
+      gsap.set(e, {
+        color: `rgb(${colors.splice(random, 1)[0]})`
+      })
+    });
+  }
 
 
   dropText(): void {
     this.tl.fromTo([
       this.marineF.nativeElement,
-      this.fresh.nativeElement,
       this.acce.nativeElement,
       this.spec.nativeElement,
       this.aboutF.nativeElement,
-      this.cont.nativeElement
+      this.cont.nativeElement,
+      this.aquadrop.nativeElement,
+      this.terrdrop.nativeElement,
+      this.cagedrop.nativeElement,
     ], {
       x: 50,
       opacity: 0,

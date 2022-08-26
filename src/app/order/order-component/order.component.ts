@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {OrderService} from "../services/order.service";
 import {objValues, Purchase} from "../../shared/types/purchase.interface";
 import {FormValidator} from "../../shared/validators/form.validator";
@@ -49,11 +49,11 @@ export class OrderComponent implements OnInit {
 
   }
 
-  get(control: string) {
+  get(control: string): any {
     return this.form.get(control)
   }
 
-  errors(control: string) {
+  errors(control: string): string[] | null {
     const errors: any = this.form.get(control)?.errors;
     if (this.get(control)?.touched && this.get(control)?.invalid) {
       return Object.values(errors);

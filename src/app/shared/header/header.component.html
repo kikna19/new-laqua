@@ -1,6 +1,11 @@
 <mat-toolbar-row class="main">
   <div class="header">
-    <div class="header__logo" routerLink="/">laqua</div>
+    <div class="header__logo" routerLink="/">
+      <img src="../../../assets/attachment_57389239-removebg-preview.png">
+      <div>
+        <span #logo>exotic friends</span>
+      </div>
+    </div>
     <div class="header__content">
       <div #aquarium>aquarium</div>
       <div #terrarium>terrarium</div>
@@ -20,10 +25,12 @@
   <mat-divider class="header__line"></mat-divider>
   <div class="drop" [@drop]="drop1">
     <a #marineF (click)="hambRotate()">marine fish</a>
-    <a #fresh>freshwater fish</a>
     <a #acce>accessories</a>
     <a #spec>special offer</a>
     <a #aboutF>about</a>
     <a #cont>contact</a>
+    <a #aquadrop id="aqua">aquarium</a>
+    <a #terrdrop id="terr">terrarium</a>
+    <a #cagedrop id="cage">cage</a>
   </div>
 </mat-toolbar-row>

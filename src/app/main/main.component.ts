@@ -45,24 +45,25 @@ export class MainComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    textSplitAnimate([this.friend.nativeElement], 0, 1.1, .1);
-    textAnimate([this.btnText.nativeElement, this.offerHeader.nativeElement]);
+
+    // textSplitAnimate([this.friend.nativeElement], 0, 1.1, .1);
+    // textAnimate([this.btnText.nativeElement, this.offerHeader.nativeElement]);
   }
 
   ngAfterViewInit(): void {
-    fromEvent(document, 'scroll').pipe(
-      map((e: any) => this.getScroll(e.target.scrollingElement)),
-      filter(value => value >= 80),
-      take(1),
-      concatMap(_ => this.numsShow()),
-    ).subscribe();
+    // fromEvent(document, 'scroll').pipe(
+    //   map((e: any) => this.getScroll(e.target.scrollingElement)),
+    //   filter(value => value >= 80),
+    //   take(1),
+    //   concatMap(_ => this.numsShow()),
+    // ).subscribe();
 
-    scrollAnimate([
-      this.offer.nativeElement,
-      this.stepperHeader.nativeElement,
-      this.stepperItem.nativeElement,
-      this.productsHeader.nativeElement
-    ]);
+    // scrollAnimate([
+    //   this.offer.nativeElement,
+    //   this.stepperHeader.nativeElement,
+    //   this.stepperItem.nativeElement,
+    //   this.productsHeader.nativeElement
+    // ]);
   }
 
   getScroll(e: any): number {

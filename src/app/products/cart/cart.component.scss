@@ -16,7 +16,6 @@ $sec-color: rgb(40, 44, 75);
   margin: 0 7rem 0 7rem;
   color: white;
 
-
   &__details {
     @include flex(flex-start, flex-start, column);
     width: 100%;
@@ -66,7 +65,7 @@ $sec-color: rgb(40, 44, 75);
         padding-top: 3rem;
         width: 100%;
         height: 20vh;
-        border: .1rem solid #b964f3;
+        border: .1rem solid $border-color;
         border-radius: .5rem;
 
         h1 {
@@ -127,9 +126,9 @@ $sec-color: rgb(40, 44, 75);
         padding-top: 3rem;
         overflow-y: scroll;
         overflow-x: hidden;
-        border: .1rem solid #b964f3;
+        border: .1rem solid $border-color;
         border-radius: .5rem;
-        margin-top: 2rem;
+        margin-top: 2.3rem;
 
         h1 {
           font-family: 'GaroaHackerClubeBold', monospace;
@@ -149,7 +148,6 @@ $sec-color: rgb(40, 44, 75);
           line-height: 2rem;
           text-transform: capitalize;
           font-family: Verdana, monospace;
-          ;
           font-size: 1rem;
           color: #ffffff;
         }
@@ -159,14 +157,16 @@ $sec-color: rgb(40, 44, 75);
         @include flex(center, space-around, row);
         height: 3rem;
         width: 100%;
-        border: .1rem solid #b964f3;
-        margin-top: 2rem;
+        border: .1rem solid $border-color;
+        margin-top: 2.3rem;
         color: white;
         font-family: 'GaroaHackerClubeBold', monospace;
         letter-spacing: .1rem;
         font-size: 1rem;
         text-transform: capitalize;
         border-radius: .5rem;
+        margin-bottom: 0 !important;
+
 
         fa-icon {
           color: rgb(149, 187, 74);
@@ -177,12 +177,27 @@ $sec-color: rgb(40, 44, 75);
     }
 
     &__products {
-      display: block;
-      width: 80%;
+      border-radius: .5rem;
+      border: .1rem solid $border-color;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-flow: row wrap;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      width: 75%;
       height: 100%;
-      background-color: green;
+     
+
+      .item{
+        display: inline-block;
+        text-align: start;
+        height: auto;
+        width: 30%;
+        margin: 1rem;
+      }
     }
 
-    
+
   }
 }

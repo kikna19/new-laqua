@@ -10,12 +10,13 @@
 
 $main-color: #071c26;
 $star-color: #b8912f;
+$b: rgb(25, 28, 31);
 
 .cover {
   @include flex(center, flex-start, column);
   height: calc(80% - 6rem);
   width: 100%;
-  background: url("https://www.housedigest.com/img/gallery/how-much-does-it-cost-to-set-up-and-maintain-a-freshwater-fish-tank/l-intro-1655132713.jpg") no-repeat center;
+  background: url("https://live.staticflickr.com/1948/44280372874_545034341d_b.jpg") no-repeat center;
   background-size: cover;
   margin-bottom: 5rem;
 
@@ -28,28 +29,32 @@ $star-color: #b8912f;
 
     h1 {
       color: $main-color;
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 800;
       letter-spacing: .5rem;
       border-radius: .5rem;
       font-family: 'Luckiest Guy', cursive;
       text-transform: capitalize;
+      color: $b;
+
 
     }
 
     button {
-      width: 7rem;
-      height: 3.5rem;
+      width: 8rem;
+      height: 4rem;
       padding: 0;
       position: relative;
-      margin-top: 4rem;;
+      margin-top: 4rem;
       border: .05rem solid $main-color;
       background: transparent;
       cursor: pointer;
       color: $main-color;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-family: 'DynaPuff', cursive;
       text-transform: capitalize;
+      color: $main-color;
+
 
 
       span {
@@ -57,7 +62,8 @@ $star-color: #b8912f;
         left: 0;
         top: 0;
         height: 100%;
-        background: $main-color;
+        background: $b;
+
       }
     }
   }
@@ -117,12 +123,12 @@ $star-color: #b8912f;
   .second-offer {
     @include flex(flex-start, space-between, row);
     flex-wrap: wrap;
-    width: 50%;
+    width: 55%;
     height: 100%;
 
     img {
-      width: 15vw;
-      height: 25vh;
+      width: 15rem;
+      height: 15rem;
     }
 
     &__first-ad,
@@ -157,8 +163,8 @@ mat-horizontal-stepper {
 
 @mixin changeLineColour($index) {
   .mat-horizontal-stepper-header {
-    & + .mat-stepper-horizontal-line:nth-child(#{$index}) {
-      background-color: $star-color !important;
+    &+.mat-stepper-horizontal-line:nth-child(#{$index}) {
+      background-color: $star-color  !important;
       transition: all 1s;
     }
   }
@@ -257,4 +263,384 @@ mat-horizontal-stepper {
       opacity: 0;
     }
   }
+}
+
+
+
+@media (max-width:1400px) {
+  .special-offer {
+
+    .first-offer {
+      width: 45%;
+    }
+
+    .second-offer {
+      width: 55%;
+
+      &__first-ad,
+      &__second-ad,
+      &__third-ad {
+        margin-left: 3rem;
+      }
+    }
+  }
+
+}
+
+
+
+
+
+@media (max-width:1280px) {
+  .special-offer {
+
+    .first-offer {
+      width: 45%;
+
+      &__img {
+        height: 30.6rem;
+      }
+    }
+
+    .second-offer {
+      width: 55%;
+
+      img {
+        width: 13rem;
+        height: 13rem;
+      }
+
+      &__first-ad,
+      &__second-ad,
+      &__third-ad {
+        margin-left: 2rem;
+      }
+    }
+  }
+
+}
+
+
+@media (max-width:1120px) {
+  .special-offer {
+    @include flex(center, flex-start, column);
+    height: auto;
+
+    .first-offer {
+      width: 40rem;
+
+      &__img {
+        width: 100%;
+        height: 30rem;
+      }
+    }
+
+    .second-offer {
+      @include flex(flex-start, space-between, row);
+
+      width: 40rem;
+      margin-top: 3rem;
+
+
+      img {
+        width: 15rem;
+        height: 15rem;
+      }
+
+      &__first-ad,
+      &__second-ad,
+      &__third-ad {
+        margin-left: 0;
+        margin-top: 2rem;
+      }
+    }
+  }
+
+  .top-first,
+  .top-second,
+  .top-third,
+  .top-fourth,
+  .top-fifth {
+    @include flex(center, space-between, column);
+    height: auto;
+
+    div {
+      width: 40rem;
+      margin-left: 0;
+
+    }
+
+    img {
+      margin-top: 2rem;
+      width: 40rem;
+      margin-right: 0;
+    }
+  }
+
+}
+
+
+
+@media (max-width: 1100px) {
+  .header-section {
+    padding: 0 5rem 0 5rem;
+    width: calc(100% - 10rem);
+  }
+
+  .special-offer {
+    width: calc(100% - 10rem);
+    padding: 0 5rem 0 5rem;
+  }
+}
+
+
+
+@media (max-width: 1000px) {
+
+  .cover {
+    height: 50%;
+  }
+
+  .header-section {
+    padding: 0 4rem 0 4rem;
+    width: calc(100% - 8rem);
+  }
+}
+
+
+@media (max-width:860px) {
+  .special-offer {
+
+    .first-offer {
+      @include flex(center, flex-start, column);
+      width: 100%;
+
+      &__img {
+        width: 20rem;
+        height: 20rem;
+      }
+    }
+
+    .second-offer {
+      @include flex(center, flex-start, column);
+      width: 100%;
+
+      img {
+        width: 20rem;
+        height: 20rem;
+      }
+
+      &__first-ad,
+      &__second-ad,
+      &__third-ad {
+        @include flex(center, flex-start, column);
+        margin-top: 2rem;
+        margin-left: 0;
+      }
+    }
+
+  }
+
+  .top-first,
+  .top-second,
+  .top-third,
+  .top-fourth,
+  .top-fifth {
+   
+
+    div {
+      width: 30rem;
+      
+    }
+
+    img {
+      margin-top: 2rem;
+      width: 30rem;
+    }
+  }
+
+
+}
+
+
+
+
+@media (max-width: 800px) {
+  .cover {
+    height: 40%;
+
+
+    &__main {
+      height: 8rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      button {
+        width: 6rem;
+        height: 3rem;
+        font-size: 1rem;
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .cover {
+    height: 30%;
+
+    &__main {
+      margin-top: 2rem;
+      height: 5rem;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      button {
+        width: 4rem;
+        height: 2rem;
+        font-size: .8rem;
+        color: white;
+      }
+    }
+  }
+
+  .top-first,
+  .top-second,
+  .top-third,
+  .top-fourth,
+  .top-fifth {
+   
+
+    div {
+      width: 25rem;
+
+    }
+
+    img {
+      width: 25rem;
+    }
+  }
+}
+
+
+@media (max-width: 500px) {
+  .header-section {
+    padding: 0 2rem 0 2rem;
+    width: calc(100% - 4rem);
+
+    h1 {
+      font-size: 1.3rem;
+    }
+  }
+
+  .special-offer {
+    width: calc(100% - 4rem);
+    padding: 0 2rem 0 2rem;
+
+
+    .first-offer {
+      @include flex(center, flex-start, column);
+      width: 100%;
+     
+      &__img {
+        width: 15rem;
+        height: 15rem;
+      }
+
+      &__text {
+        font-size: 1rem;
+      }
+    }
+
+    .second-offer {
+  
+
+      img {
+        width: 15rem;
+        height: 15rem;
+      }
+
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  mat-horizontal-stepper {
+
+    .mat-horizontal-stepper-header {
+
+      fa-icon {
+        margin-left: .3rem;
+        font-size: 1.1rem;
+
+      }
+    }
+  }
+
+  .top-first,
+  .top-second,
+  .top-third,
+  .top-fourth,
+  .top-fifth {
+
+
+    div {
+      width: 20rem;
+    
+
+      h2 {
+        font-size: 1.2rem;
+      }
+
+      p {
+        font-size: .8rem;
+      }
+    }
+
+    img {
+      width: 20rem;
+    }
+  }
+
+}
+
+@media (max-width: 400px) {
+
+
+  mat-horizontal-stepper {
+
+    .mat-horizontal-stepper-header {
+      text-align: start;
+
+
+      fa-icon {
+        margin-left: .4rem !important;
+        font-size: 1rem;
+
+      }
+    }
+  }
+
+
+  .top-first,
+  .top-second,
+  .top-third,
+  .top-fourth,
+  .top-fifth {
+
+    div {
+      width: 18rem;
+
+    }
+
+    img {
+      width: 18rem;
+    }
+  }
+
 }

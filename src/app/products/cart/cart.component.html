@@ -4,12 +4,12 @@
     <mat-progress-bar *ngIf="loaderService.loaderStatus" mode="indeterminate"></mat-progress-bar>
   </div>
   <div class="category__result">
-    <div class="category__result__products" 
-    *ngIf="itemNums; 
+    <div class="category__result__products"
+     *ngIf="itemNums; 
     else noProducts">
-    <div class="g">
-      <ng-template #comp></ng-template>
-    </div>
+      <div *ngFor="let item of products" class="item" #itemList>
+      <app-card [item]="item"></app-card>
+      </div>
     </div>
     <ng-template #noProducts>
       <p>no products</p>
@@ -36,7 +36,7 @@
       </div>
       <div class="category__result__select__cart">
         <span>view cart</span>
-        <fa-icon [icon]="view" routerLink="/products/cart"></fa-icon>
+        <fa-icon [icon]="view" routerLink="/products/p"></fa-icon>
       </div>
     </div>
   </div>

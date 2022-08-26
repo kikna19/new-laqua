@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Paytone+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=DynaPuff:wght@500&family=Roboto:ital,wght@0,400;1,300&family=Rubik+Dirt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Cinzel&family=Cormorant+Garamond:wght@300&family=DynaPuff:wght@500&family=Luckiest+Guy&family=Roboto:ital,wght@0,400;1,300&family=Rubik+Dirt&family=Rubik+Distressed&display=swap');
+
 @mixin flex($align, $justify, $dir) {
   display: flex;
   align-items: $align;
   justify-content: $justify;
   flex-direction: $dir;
 }
+
 $main-color: #071c26;
 
 
@@ -31,10 +34,30 @@ $main-color: #071c26;
     }
 
     &__logo {
-      @include flex(center, space-between, row);
+      @include flex(center, flex-start, row);
       width: 20%;
       height: 100%;
       font-size: 1.3rem;
+
+      img {
+        width: 4rem;
+        height: 4rem;
+
+      }
+
+      div {
+        @include flex(flex-start, flex-end, column);
+        flex-wrap: wrap;
+        width: 7rem;
+        height: 4rem;
+        margin-left: .5rem;
+
+        span {
+          font-family: 'Paytone One', sans-serif;
+          text-transform: uppercase;
+          margin: .3rem 0 .3rem 0;
+        }
+      }
     }
 
     &__content {
@@ -53,6 +76,7 @@ $main-color: #071c26;
         color: white;
       }
     }
+
     &__actions {
       @include flex(center, space-between, row);
       height: 100%;
@@ -63,6 +87,7 @@ $main-color: #071c26;
         font-size: 1.5rem;
         color: white;
       }
+
       span {
         .mat-badge-content {
           border-radius: .5rem;
@@ -70,6 +95,7 @@ $main-color: #071c26;
           background: red;
         }
       }
+
       .hamb {
         @include flex(center, space-between, row);
         cursor: pointer;
@@ -83,12 +109,14 @@ $main-color: #071c26;
       }
     }
   }
+
   .drop {
     position: absolute;
     top: 6rem;
+    left: 0;
     @include flex(flex-start, flex-start, column);
     background: rgb(25, 28, 31);
-    width: calc(100% - 3.8rem);
+    width: calc(100% - 3.5rem);
     height: calc(100% - 8rem);
     padding-top: 2rem;
     padding-left: 3.5rem;
@@ -105,6 +133,260 @@ $main-color: #071c26;
       cursor: pointer;
       letter-spacing: .3rem;
     }
+
+    #aqua,
+    #terr,
+    #cage {
+      display: none;
+    }
   }
 }
 
+
+@media (max-width: 1100px) {
+  .main {
+    .header {
+      padding: 0 5rem 0 5rem;
+      width: calc(100% - 10rem);
+
+      &__content {
+        div {
+          font-size: 1.1rem;
+          letter-spacing: .1rem;
+        }
+      }
+
+      &__actions {
+        font-size: 1.2rem;
+      }
+    }
+
+    .drop {
+      width: calc(100% - 1.5rem);
+      padding-left: 1.5rem;
+
+      a {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .main {
+
+    .drop {
+      width: calc(100% - .5rem);
+      padding-left: .5rem;
+    }
+
+    .header {
+      padding: 0 4rem 0 4rem;
+      width: calc(100% - 8rem);
+
+      &__logo {
+
+        img {
+          width: 3.5rem;
+          height: 3.5rem;
+        }
+
+
+        div {
+          span {
+            font-size: 1.2rem;
+
+          }
+        }
+
+      }
+
+      &__content {
+        div {
+          font-size: 1rem;
+          letter-spacing: .1rem;
+        }
+
+      }
+
+      &__actions {
+
+        fa-icon {
+          font-size: 1.4rem;
+        }
+
+
+        span {
+          .mat-badge-content {
+            width: 1.2rem;
+            height: 1.2rem;
+
+          }
+        }
+
+        .hamb {
+          fa-icon {
+            font-size: .8rem;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .main {
+    .header {
+      &__logo {
+        width: 50%;
+      }
+
+      &__content {
+        display: none;
+      }
+
+      &__actions {
+        width: 20%;
+      }
+    }
+
+    .drop {
+
+      #aqua,
+      #terr,
+      #cage {
+        display: block
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+
+  .main {
+    .header {
+      &__logo {
+        width: 50%;
+      }
+
+      &__actions {
+        width: 30%;
+
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .main {
+    .drop {
+      a {
+        margin-left: -1.5rem !important;
+      }
+    }
+
+    .header {
+      padding: 0 2rem 0 2rem;
+      width: calc(100% - 4rem);
+
+      &__logo {
+        width: 60%;
+
+        img{
+          width: 3rem;
+          height: 3rem;
+        }
+
+        div {
+          span {
+            font-size: 1rem;
+          }
+        }
+
+      }
+
+      &__actions {
+
+        width: 35%;
+
+
+        fa-icon {
+          font-size: 1.2rem;
+        }
+
+
+        span {
+          .mat-badge-content {
+            width: 1.2rem;
+            height: 1.2rem;
+
+          }
+        }
+
+        .hamb {
+          fa-icon {
+            font-size: .7rem;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .main {
+    .drop {
+      a {
+        font-size: 1.2rem;
+      }
+    }
+
+    .header {
+      &__logo {
+        width: 55%;
+
+        img {
+          width: 3rem;
+          height: 3rem;
+        }
+
+
+        div {
+          span {
+            font-size: 1rem;
+
+          }
+        }
+
+
+      }
+
+      &__actions {
+        width: 35%;
+
+        fa-icon {
+          font-size: 1rem;
+        }
+
+
+        span {
+          .mat-badge-content {
+            width: 1rem;
+            height: 1rem;
+            font-size: .7rem;
+            padding-bottom: .1rem;
+          }
+        }
+
+        .hamb {
+          fa-icon {
+            font-size: .6rem;
+          }
+        }
+
+      }
+    }
+  }
+}

@@ -1,14 +1,12 @@
-<div class="items">
-  <mat-card class="item" *ngFor="let item of data">
-    <mat-card-header>
-      <mat-card-title class="item__header">{{item.name}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image [src]="item.img">
-    <div mat-card-content class="item__details">
-      <span>price: {{item.price + ' '}}<span class="gel">GEL</span></span>
-    </div>
-    <mat-card-actions class="item__btn">
-      <!-- <button mat-button (click)="addToCart(item)">add to cart</button> -->
-    </mat-card-actions>
-  </mat-card>
-</div>
+<mat-card class="item">
+  <mat-card-header>
+    <mat-card-title class="item__header">{{item.name}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image [src]="item.img">
+  <div mat-card-content class="item__details">
+    <span>price: {{item.price + ' '}}<span class="gel">GEL</span></span>
+  </div>
+  <mat-card-actions class="item__btn">
+    <button mat-button (click)="addToCart(item)">add to cart</button>
+  </mat-card-actions>
+</mat-card>

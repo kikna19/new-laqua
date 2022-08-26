@@ -1,15 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+$border-color: rgb(43, 45, 48);
+
 .order {
   display: block;
   text-align: start;
   width: calc(100% - 14rem);
-  height: calc(100% - 2rem);
-  background: white;
+  height: calc(80% - 2rem);
+  background: transparent;
   padding: 2rem 7rem 0 7rem;
+  color: white;
 
   h1 {
     font-size: 2rem;
     text-transform: uppercase;
-    font-family: "Arial Black", sans-serif;
+    font-family: 'DynaPuff', serif;
     font-weight: bold;
     letter-spacing: .2rem;
   }
@@ -29,12 +33,13 @@
     .mat-form-field-label {
       text-transform: capitalize;
       font-size: 1.1rem;
+      color: white;
     }
 
     .mat-form-field-appearance-outline {
 
       .mat-form-field-outline {
-        color: #071c26;
+        color: $border-color
       }
     }
 
@@ -47,6 +52,7 @@
     input::placeholder {
       font-style: italic;
       font-size: .9rem;
+      color: grey;
     }
 
     input {
@@ -54,17 +60,20 @@
       height: 2rem;
       font-size: 1.1rem;
       font-family: "Andale Mono", monospace;
+      color: white;
     }
 
     button {
       font-size: 1.1rem;
-      font-family: Verdana, monospace;
+      font-family: 'Secular One', monospace;
       text-transform: capitalize;
-      background: #071c26;
+      background: transparent;
       color: white;
       margin-top: 1rem;
+      border: .1rem solid $border-color;
+      padding: 0 .5rem 0 .5rem;
+      letter-spacing: .2rem;
     }
-
 
   }
 }

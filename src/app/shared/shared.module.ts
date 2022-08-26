@@ -34,6 +34,7 @@ import { MatCardMdImage, MatCardModule } from '@angular/material/card';
     SpinnerComponent,
     ScrollDirective,
     ComponentDirective,
+    CardComponent
   ],
   imports: [
     CommonModule,
